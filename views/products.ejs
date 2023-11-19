@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <%- include("templates/head.ejs") %>
+    
 <body>
-    <%- include("templates/table.ejs") %>
+    <%- include("templates/navBar.ejs") %>
+    <div class="text-center">
+        <h1>Productos</h1>
+        <%- include("templates/table.ejs") %>
+        <button type="button" class="btn btn-warning">Agregar producto</button>
+    </div>
 </body>
 </html>

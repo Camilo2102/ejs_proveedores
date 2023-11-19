@@ -1,18 +1,34 @@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <% columns.forEach(column => { %>
-                <th scope="col"><%= column %></th>
-            <% }) %>
-        </tr>
-    </thead>
-    <tbody>
-        <% data.forEach(info => { %>
+<!-- products.ejs -->
+
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
             <tr>
                 <% columns.forEach(column => { %>
-                    <td><%= info[column] %></td>
+                    <th scope="col"><%= column %></th>
                 <% }) %>
+                <th>Actualizar</th>
+                <th>Eliminar</th>
             </tr>
-        <% }) %>   
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <% data.forEach(info => { %>
+                <tr>
+                    <% columns.forEach(column => { %>
+                        <td><%= info[column] %></td>
+                    <% }) %>
+                    <td>
+                        <a>
+                            <img src="img/pen.png" alt="Actualizar producto" style="width: 20px; height: auto;">
+                        </a>
+                    </td>
+                    <td>
+                        <a>
+                            <img src="img/trash.png" alt="Eliminar producto" style="width: 20px; height: auto;">
+                        </a>
+                    </td>
+                </tr>
+            <% }) %>   
+        </tbody>
+    </table>
+</div>

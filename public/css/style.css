@@ -1,0 +1,15 @@
+h1{
+    text-align: center;
+    margin: 20px;
+    font-size: 50px; /* Tamaño de la fuente */
+    font-family: "Arial", sans-serif;
+    font-weight: 600;
+}
+.table th,
+.table td {
+    border: 2px solid #c7d3dc; /* Ajusta el grosor del borde según tus preferencias */
+}
+
+button {
+   margin-bottom: 50px;
+}

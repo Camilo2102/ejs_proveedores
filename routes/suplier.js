@@ -3,14 +3,17 @@ const router = express.Router();
 const data = require("../public/data/data.json")
 
 
-const proveedores = data.proveedores.map(proveedores =>{
-    delete proveedores.productos;
-    return proveedores;
+const supliers = data.proveedores.map(proveedores =>{
+    return {
+        Nombre: proveedores.nombre,
+        Teléfono: proveedores.telefono,
+        Ubicación: proveedores.ubicacion
+    }
 })
-const columns = Object.keys(proveedores[0]);
+const columns = ["Nombre", "Teléfono", "Ubicación"];
 
 router.get("/", (req, res) => {
-    res.render("suplier", {title: 'Suplier', columns: columns, data: proveedores})
+    res.render("suplier", {title: 'Suplier', columns: columns, data: supliers})
    
 })
 
