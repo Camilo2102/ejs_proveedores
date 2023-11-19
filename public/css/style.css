@@ -1,15 +1,18 @@
+/*Los titulos de las páginas*/
 h1{
     text-align: center;
     margin: 20px;
-    font-size: 50px; /* Tamaño de la fuente */
+    font-size: 50px; 
     font-family: "Arial", sans-serif;
     font-weight: 600;
 }
+/*Para las tablas que tienen la infromacion de proveedores y productos*/
 .table th,
 .table td {
-    border: 2px solid #c7d3dc; /* Ajusta el grosor del borde según tus preferencias */
+    border: 2px solid #c7d3dc; 
 }
 
-button {
+/*Para el boton de agregar*/
+.btn-agregar {
    margin-bottom: 50px;
 }

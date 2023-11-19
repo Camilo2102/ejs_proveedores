@@ -19,7 +19,6 @@ data.proveedores.forEach(proveedor => {
 const columns = ['Proveedor', 'Producto', 'cantidad', 'Descripción'];
 
 router.get("/", (req, res) => {
-    console.log(products); // Imprime los datos en la consola para verificar
     res.render("products", { title: 'Products', columns: columns, data: products });
 });
 
