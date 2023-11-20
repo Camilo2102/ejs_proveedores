@@ -7,6 +7,9 @@
                 <% columns.forEach(column => { %>
                     <th scope="col"><%= column %></th>
                 <% }) %>
+                <% if(title === 'Suplier'){%>
+                    <th>Productos</th>
+                <%}%>
                 <th>Actualizar</th>
                 <th>Eliminar</th>
             </tr>
@@ -17,14 +20,21 @@
                     <% columns.forEach(column => { %>
                         <td><%= info[column] %></td>
                     <% }) %>
+                    <% if(title === 'Suplier'){%>
+                        <td>
+                            <a href="/suplierProducts/<%= info.Nombre %>">
+                                <img src="img/boxs.png" alt="Productos" style="width: 20px; height: auto;">
+                            </a>
+                        </td>
+                    <%}%>
                     <td>
                         <a>
-                            <img src="img/pen.png" alt="Actualizar producto" style="width: 20px; height: auto;">
+                            <img src="../img/pen.png" alt="Actualizar producto" style="width: 20px; height: auto;">
                         </a>
                     </td>
                     <td>
                         <a>
-                            <img src="img/trash.png" alt="Eliminar producto" style="width: 20px; height: auto;">
+                            <img src="../img/trash.png" alt="Eliminar producto" style="width: 20px; height: auto;">
                         </a>
                     </td>
                 </tr>
