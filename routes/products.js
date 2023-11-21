@@ -7,16 +7,16 @@ data.proveedores.forEach(proveedor => {
     if (proveedor.productos && Array.isArray(proveedor.productos)) {
         proveedor.productos.forEach(producto => {
             products.push({
-                Proveedor: proveedor.nombre,
-                Producto: producto.nombre,
+                proveedor: proveedor.nombre,
+                producto: producto.nombre,
                 cantidad: producto.cantidad,
-                Descripción: producto.descripcion
+                descripcion: producto.descripcion
             });
         });
     }
 });
 
-const columns = ['Proveedor', 'Producto', 'cantidad', 'Descripción'];
+const columns = ['proveedor', 'producto', 'cantidad', 'descripcion'];
 
 router.get("/", (req, res) => {
     res.render("products", { title: 'Products', columns: columns, data: products });

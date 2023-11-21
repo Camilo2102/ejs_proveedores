@@ -11,12 +11,12 @@ router.get('/:nombre', (req, res) => {
     products = [];
     proveedor.productos.forEach(producto => {
         products.push({
-            Producto: producto.nombre,
+            producto: producto.nombre,
             cantidad: producto.cantidad,
-            Descripción: producto.descripcion
+            descripcion: producto.descripcion
         });
     });
-    const columns = ['Producto', 'cantidad', 'Descripción'];
+    const columns = ['producto', 'cantidad', 'descripcion'];
     if (proveedor) {
         // Renderiza una página con los productos del proveedor
         res.render('suplierProducts', { title: `${nombreProveedor}`, columns: columns, data: products });
