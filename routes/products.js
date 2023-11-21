@@ -4,16 +4,15 @@ const data = require("../public/data/data.json");
 
 const products = [];
 data.proveedores.forEach(proveedor => {
-    if (proveedor.productos && Array.isArray(proveedor.productos)) {
-        proveedor.productos.forEach(producto => {
-            products.push({
-                proveedor: proveedor.nombre,
-                producto: producto.nombre,
-                cantidad: producto.cantidad,
-                descripcion: producto.descripcion
-            });
+    proveedor.productos.forEach(producto => {
+        products.push({
+            proveedor: proveedor.nombre,
+            producto: producto.nombre,
+            cantidad: producto.cantidad,
+            descripcion: producto.descripcion
         });
-    }
+    });
+    
 });
 
 const columns = ['proveedor', 'producto', 'cantidad', 'descripcion'];

@@ -5,6 +5,7 @@ const data = require("../public/data/data.json")
 
 const supliers = data.proveedores.map(proveedores =>{
     return {
+        id: proveedores.id,
         nombre: proveedores.nombre,
         telefono: proveedores.telefono,
         ubicacion: proveedores.ubicacion
