@@ -1,8 +1,8 @@
 {
   "supliers": [
     {
-      "id": 1,
-      "name": "Proveedora hermosa",
+      "id": "a340b343-ae56-4585-b225-a6dd410cef33",
+      "name": "Proveedor uno",
       "phone": "123-456-7890",
       "direction": "Ciudad A",
       "products": [
@@ -19,7 +19,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "d1c84240-b331-4544-a38e-772cb754b9da",
       "name": "Proveedor Dos",
       "phone": "987-654-3210",
       "direction": "Ciudad B",
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": "40a6269c-ff65-4c10-8d82-c272df096d15",
       "name": "Proveedor Tres",
       "phone": "555-123-4567",
       "direction": "Ciudad C",
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "9f32c324-5f01-446a-9c93-bafa9f76e8b3",
       "name": "Proveedor Cuatro",
       "phone": "111-222-3333",
       "direction": "Ciudad D",
@@ -73,7 +73,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": "28f37b5e-47d7-4688-8232-a651ea77f55c",
       "name": "Proveedor Cinco",
       "phone": "444-555-6666",
       "direction": "Ciudad E",
@@ -91,7 +91,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": "8aeb289d-094c-4ddd-8a59-e98f00772486",
       "name": "Proveedor Seis",
       "phone": "777-888-9999",
       "direction": "Ciudad F",
@@ -109,117 +109,10 @@
       ]
     },
     {
-      "id": 7,
-      "name": "Proveedor Siete",
-      "phone": "333-666-9999",
-      "direction": "Ciudad G",
-      "products": [
-        {
-          "name": "Producto G1",
-          "amount": 28,
-          "description": "Descripción del Producto G1"
-        },
-        {
-          "name": "Producto G2",
-          "amount": 12,
-          "description": "Descripción del Producto G2"
-        }
-      ]
-    },
-    {
-      "id": 8,
-      "name": "Proveedor Ocho",
-      "phone": "999-888-7777",
-      "direction": "Ciudad H",
-      "products": [
-        {
-          "name": "Producto H1",
-          "amount": 5,
-          "description": "Descripción del Producto H1"
-        },
-        {
-          "name": "Producto H2",
-          "amount": 45,
-          "description": "Descripción del Producto H2"
-        }
-      ]
-    },
-    {
-      "id": 9,
-      "name": "Proveedor Nueve",
-      "phone": "123-987-6543",
-      "direction": "Ciudad I",
-      "products": [
-        {
-          "name": "Producto I1",
-          "amount": 32,
-          "description": "Descripción del Producto I1"
-        },
-        {
-          "name": "Producto I2",
-          "amount": 18,
-          "description": "Descripción del Producto I2"
-        }
-      ]
-    },
-    {
-      "id": 10,
-      "name": "Proveedor Diez",
-      "phone": "876-543-2109",
-      "direction": "Ciudad J",
-      "products": [
-        {
-          "name": "Producto J1",
-          "amount": 15,
-          "description": "Descripción del Producto J1"
-        },
-        {
-          "name": "Producto J2",
-          "amount": 25,
-          "description": "Descripción del Producto J2"
-        }
-      ]
-    },
-    {
-      "id": 11,
-      "name": "la hermosa",
-      "phone": "321312",
-      "direction": "saleh",
-      "products": []
-    },
-    {
-      "id": 12,
-      "name": "la hermosa",
-      "phone": "321312",
-      "direction": "saleh",
-      "products": []
-    },
-    {
-      "id": 13,
-      "name": "asfdads",
-      "phone": "312312",
-      "direction": "fsadads",
-      "products": []
-    },
-    {
-      "id": 14,
-      "name": "312321",
-      "phone": "312312",
-      "direction": "fsadads",
-      "products": []
-    },
-    {
-      "id": 15,
-      "name": "fasdsdf",
-      "phone": "321132",
-      "direction": "fdasdsf",
-      "products": []
-    },
-    {
-      "id": 16,
-      "name": "preciosa",
-      "phone": "312123",
-      "direction": "dfsadfs",
+      "id": "c3e4782f-6904-422e-b720-525c6078ca18",
+      "name": "Proveedora hermosa",
+      "phone": "3123231289",
+      "direction": "CALLE23",
       "products": []
     }
   ]

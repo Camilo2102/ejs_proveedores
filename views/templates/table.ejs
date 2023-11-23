@@ -18,13 +18,13 @@
         </thead>
         <tbody id="table_body">
             <% data.forEach(info => { %>
-                <tr>
+                <tr id="row_<%= info.id %>">
                     <% columns.forEach(column => { %>
                         <td id="<%= column.field + '_' + info.id   %>">
                             <% if (column.field !== 'products') { %>
                                 <%= info[column.field] %>
                             <% } else { %>
-                                <a href="/suplierProducts/<%= info.name %>">
+                                <a href="/suplier/<%= info.id %>">
                                     <img src="img/boxs.png" alt="Productos" style="width: 20px; height: auto;">
                                 </a>    
                             <% } %>
@@ -36,7 +36,7 @@
                         </a>
                     </td>
                     <td>
-                        <a>
+                        <a type="button" name="btn_show_delete" data-bs-toggle="modal" data-bs-target="#deleteModal" id="deleteBtn_<%=  info.id   %>" value="<%= info.id %>">
                             <img src="../img/trash.png" alt="Eliminar producto" style="width: 20px; height: auto;">
                         </a>
                     </td>
@@ -71,6 +71,25 @@
         </div>
     </div>
     
-
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="deleteModalLabel">Eliminar <%=title%></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input id="form-id" style="display: none;">
+                    <ul class="text-start" id="delete_data">
+                        
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_delete_btn">Cerrar</button>
+                    <button type="button" class="btn btn-danger" id="btn_delete">Eliminar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
