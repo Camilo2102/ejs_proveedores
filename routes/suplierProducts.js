@@ -3,11 +3,11 @@ const router = express.Router();
 const data = require("../public/data/data.json");
 
 let products = [];
-router.get('/:nombre', (req, res) => {
+router.get('/:name', (req, res) => {
     
     const nombreProveedor = req.params.nombre;
     // Encuentra el proveedor en el JSON por el nombre
-    const proveedor = data.proveedores.find(prov => prov.nombre === nombreProveedor);
+    const proveedor = data.supliers.find(prov => prov.nombre === nombreProveedor);
     products = [];
     proveedor.productos.forEach(producto => {
         products.push({
@@ -18,7 +18,6 @@ router.get('/:nombre', (req, res) => {
     });
     const columns = ['producto', 'cantidad', 'descripcion'];
     if (proveedor) {
-        // Renderiza una página con los productos del proveedor
         res.render('suplierProducts', { title: `${nombreProveedor}`, columns: columns, data: products });
     } else {
         // Maneja el caso donde el proveedor no se encuentra

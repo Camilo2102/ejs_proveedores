@@ -5,55 +5,35 @@
         <thead class="thead-dark">
             <tr>
                 <% columns.forEach(column => { %>
-                    <th scope="col"><%= column %></th>
+                    <% if(column.field === 'products'){%>
+                        <th>Productos</th>
+                    <%}else{%>
+                        <th scope="col"><%= column.name %></th>
+                    <%}%>
                 <% }) %>
-                <% if(title === 'Suplier'){%>
-                    <th>Productos</th>
-                <%}%>
+                
                 <th>Actualizar</th>
                 <th>Eliminar</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="table_body">
             <% data.forEach(info => { %>
                 <tr>
                     <% columns.forEach(column => { %>
-                        <td><%= info[column] %></td>
-                    <% }) %>
-                    <% if(title === 'Suplier'){%>
-                        <td>
-                            <a href="/suplierProducts/<%= info.nombre %>">
-                                <img src="img/boxs.png" alt="Productos" style="width: 20px; height: auto;">
-                            </a>
+                        <td id="<%= column.field + '_' + info.id   %>">
+                            <% if (column.field !== 'products') { %>
+                                <%= info[column.field] %>
+                            <% } else { %>
+                                <a href="/suplierProducts/<%= info.name %>">
+                                    <img src="img/boxs.png" alt="Productos" style="width: 20px; height: auto;">
+                                </a>    
+                            <% } %>
                         </td>
-                    <%}%>
+                    <% }) %>    
                     <td>
-                        <a type="button" data-bs-toggle="modal" data-bs-target="#updateModal<%= info.id %>">
+                        <a type="button" name="btn_show_update" data-bs-toggle="modal" data-bs-target="#updateModal" id="updateBtn_<%=  info.id   %>" value="<%= JSON.stringify(info) %>">
                             <img src="../img/pen.png" alt="Actualizar producto" style="width: 20px; height: auto;">
                         </a>
-                        <!-- Modal -->
-                        <div class="modal fade" id="updateModal<%= info.id %>" tabindex="-1" aria-labelledby="updateModalLabel<%= info.id %>" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="updateModalLabel<%= info.id %>">Actualizar <%=title%></h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <% columns.forEach(column => { %>
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text" id="basic-addon1"><%= column %></span>
-                                                <input type="text" class="form-control" id="<%= column %>" value="<%= info[column] %>" aria-label="Username" aria-describedby="basic-addon1">
-                                            </div>
-                                        <% }) %>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                        <button type="button" class="btn btn-warning">Guardar cambios</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </td>
                     <td>
                         <a>
@@ -64,4 +44,33 @@
             <% }) %>   
         </tbody>
     </table>
-</div>
+
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="updateModalLabel">Actualizar <%=title%></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input id="form-id" style="display: none;">
+                    <% columns.forEach(column => { %>
+                        <% if (column.field !== 'products') { %>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><%= column.name %></span>
+                                <input type="text" class="form-control" id="form-<%= column.field %>" value="" aria-label="field" aria-describedby="basic-addon1">
+                            </div>
+                        <% } %>
+                    <% }) %>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_btn">Cerrar</button>
+                    <button type="button" class="btn btn-warning" id="btn_update">Guardar cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+

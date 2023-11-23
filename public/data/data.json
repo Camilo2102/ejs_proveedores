@@ -1,105 +1,226 @@
 {
-    "proveedores": [
-      {
-        "id": 1,
-        "nombre": "Proveedor Uno",
-        "telefono": "123-456-7890",
-        "ubicacion": "Ciudad A",
-        "productos": [
-          { "nombre": "Producto A1", "cantidad": 50, "descripcion": "Descripción del Producto A1" },
-          { "nombre": "Producto A2", "cantidad": 30, "descripcion": "Descripción del Producto A2" }
-        ]
-      },
-      {
-        "id": 2,
-        "nombre": "Proveedor Dos",
-        "telefono": "987-654-3210",
-        "ubicacion": "Ciudad B",
-        "productos": [
-          { "nombre": "Producto B1", "cantidad": 20, "descripcion": "Descripción del Producto B1" },
-          { "nombre": "Producto B2", "cantidad": 40, "descripcion": "Descripción del Producto B2" }
-        ]
-      },
-      {
-        "id": 3,
-        "nombre": "Proveedor Tres",
-        "telefono": "555-123-4567",
-        "ubicacion": "Ciudad C",
-        "productos": [
-          { "nombre": "Producto C1", "cantidad": 10, "descripcion": "Descripción del Producto C1" },
-          { "nombre": "Producto C2", "cantidad": 25, "descripcion": "Descripción del Producto C2" }
-        ]
-      },
-      {
-        "id": 4,
-        "nombre": "Proveedor Cuatro",
-        "telefono": "111-222-3333",
-        "ubicacion": "Ciudad D",
-        "productos": [
-          { "nombre": "Producto D1", "cantidad": 15, "descripcion": "Descripción del Producto D1" },
-          { "nombre": "Producto D2", "cantidad": 35, "descripcion": "Descripción del Producto D2" }
-        ]
-      },
-      {
-        "id": 5,
-        "nombre": "Proveedor Cinco",
-        "telefono": "444-555-6666",
-        "ubicacion": "Ciudad E",
-        "productos": [
-          { "nombre": "Producto E1", "cantidad": 22, "descripcion": "Descripción del Producto E1" },
-          { "nombre": "Producto E2", "cantidad": 18, "descripcion": "Descripción del Producto E2" }
-        ]
-      },
-      {
-        "id": 6,
-        "nombre": "Proveedor Seis",
-        "telefono": "777-888-9999",
-        "ubicacion": "Ciudad F",
-        "productos": [
-          { "nombre": "Producto F1", "cantidad": 8, "descripcion": "Descripción del Producto F1" },
-          { "nombre": "Producto F2", "cantidad": 42, "descripcion": "Descripción del Producto F2" }
-        ]
-      },
-      {
-        "id": 7,
-        "nombre": "Proveedor Siete",
-        "telefono": "333-666-9999",
-        "ubicacion": "Ciudad G",
-        "productos": [
-          { "nombre": "Producto G1", "cantidad": 28, "descripcion": "Descripción del Producto G1" },
-          { "nombre": "Producto G2", "cantidad": 12, "descripcion": "Descripción del Producto G2" }
-        ]
-      },
-      {
-        "id": 8,
-        "nombre": "Proveedor Ocho",
-        "telefono": "999-888-7777",
-        "ubicacion": "Ciudad H",
-        "productos": [
-          { "nombre": "Producto H1", "cantidad": 5, "descripcion": "Descripción del Producto H1" },
-          { "nombre": "Producto H2", "cantidad": 45, "descripcion": "Descripción del Producto H2" }
-        ]
-      },
-      {
-        "id": 9,
-        "nombre": "Proveedor Nueve",
-        "telefono": "123-987-6543",
-        "ubicacion": "Ciudad I",
-        "productos": [
-          { "nombre": "Producto I1", "cantidad": 32, "descripcion": "Descripción del Producto I1" },
-          { "nombre": "Producto I2", "cantidad": 18, "descripcion": "Descripción del Producto I2" }
-        ]
-      },
-      {
-        "id": 10,
-        "nombre": "Proveedor Diez",
-        "telefono": "876-543-2109",
-        "ubicacion": "Ciudad J",
-        "productos": [
-          { "nombre": "Producto J1", "cantidad": 15, "descripcion": "Descripción del Producto J1" },
-          { "nombre": "Producto J2", "cantidad": 25, "descripcion": "Descripción del Producto J2" }
-        ]
-      }
-    ]
-  }
-  
+  "supliers": [
+    {
+      "id": 1,
+      "name": "Proveedora hermosa",
+      "phone": "123-456-7890",
+      "direction": "Ciudad A",
+      "products": [
+        {
+          "name": "Producto A1",
+          "amount": 50,
+          "description": "Descripción del Producto A1"
+        },
+        {
+          "name": "Producto A2",
+          "amount": 30,
+          "description": "Descripción del Producto A2"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Proveedor Dos",
+      "phone": "987-654-3210",
+      "direction": "Ciudad B",
+      "products": [
+        {
+          "name": "Producto B1",
+          "amount": 20,
+          "description": "Descripción del Producto B1"
+        },
+        {
+          "name": "Producto B2",
+          "amount": 40,
+          "description": "Descripción del Producto B2"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Proveedor Tres",
+      "phone": "555-123-4567",
+      "direction": "Ciudad C",
+      "products": [
+        {
+          "name": "Producto C1",
+          "amount": 10,
+          "description": "Descripción del Producto C1"
+        },
+        {
+          "name": "Producto C2",
+          "amount": 25,
+          "description": "Descripción del Producto C2"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Proveedor Cuatro",
+      "phone": "111-222-3333",
+      "direction": "Ciudad D",
+      "products": [
+        {
+          "name": "Producto D1",
+          "amount": 15,
+          "description": "Descripción del Producto D1"
+        },
+        {
+          "name": "Producto D2",
+          "amount": 35,
+          "description": "Descripción del Producto D2"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Proveedor Cinco",
+      "phone": "444-555-6666",
+      "direction": "Ciudad E",
+      "products": [
+        {
+          "name": "Producto E1",
+          "amount": 22,
+          "description": "Descripción del Producto E1"
+        },
+        {
+          "name": "Producto E2",
+          "amount": 18,
+          "description": "Descripción del Producto E2"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Proveedor Seis",
+      "phone": "777-888-9999",
+      "direction": "Ciudad F",
+      "products": [
+        {
+          "name": "Producto F1",
+          "amount": 8,
+          "description": "Descripción del Producto F1"
+        },
+        {
+          "name": "Producto F2",
+          "amount": 42,
+          "description": "Descripción del Producto F2"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Proveedor Siete",
+      "phone": "333-666-9999",
+      "direction": "Ciudad G",
+      "products": [
+        {
+          "name": "Producto G1",
+          "amount": 28,
+          "description": "Descripción del Producto G1"
+        },
+        {
+          "name": "Producto G2",
+          "amount": 12,
+          "description": "Descripción del Producto G2"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Proveedor Ocho",
+      "phone": "999-888-7777",
+      "direction": "Ciudad H",
+      "products": [
+        {
+          "name": "Producto H1",
+          "amount": 5,
+          "description": "Descripción del Producto H1"
+        },
+        {
+          "name": "Producto H2",
+          "amount": 45,
+          "description": "Descripción del Producto H2"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Proveedor Nueve",
+      "phone": "123-987-6543",
+      "direction": "Ciudad I",
+      "products": [
+        {
+          "name": "Producto I1",
+          "amount": 32,
+          "description": "Descripción del Producto I1"
+        },
+        {
+          "name": "Producto I2",
+          "amount": 18,
+          "description": "Descripción del Producto I2"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Proveedor Diez",
+      "phone": "876-543-2109",
+      "direction": "Ciudad J",
+      "products": [
+        {
+          "name": "Producto J1",
+          "amount": 15,
+          "description": "Descripción del Producto J1"
+        },
+        {
+          "name": "Producto J2",
+          "amount": 25,
+          "description": "Descripción del Producto J2"
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "name": "la hermosa",
+      "phone": "321312",
+      "direction": "saleh",
+      "products": []
+    },
+    {
+      "id": 12,
+      "name": "la hermosa",
+      "phone": "321312",
+      "direction": "saleh",
+      "products": []
+    },
+    {
+      "id": 13,
+      "name": "asfdads",
+      "phone": "312312",
+      "direction": "fsadads",
+      "products": []
+    },
+    {
+      "id": 14,
+      "name": "312321",
+      "phone": "312312",
+      "direction": "fsadads",
+      "products": []
+    },
+    {
+      "id": 15,
+      "name": "fasdsdf",
+      "phone": "321132",
+      "direction": "fdasdsf",
+      "products": []
+    },
+    {
+      "id": 16,
+      "name": "preciosa",
+      "phone": "312123",
+      "direction": "dfsadfs",
+      "products": []
+    }
+  ]
+}

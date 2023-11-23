@@ -3,19 +3,24 @@ const router = express.Router();
 const data = require("../public/data/data.json");
 
 const products = [];
-data.proveedores.forEach(proveedor => {
-    proveedor.productos.forEach(producto => {
+data.supliers.forEach(proveedor => {
+    proveedor.products.forEach(producto => {
         products.push({
-            proveedor: proveedor.nombre,
-            producto: producto.nombre,
-            cantidad: producto.cantidad,
-            descripcion: producto.descripcion
+            suplier: proveedor.name,
+            product: producto.name,
+            amount: producto.amount,
+            description: producto.description
         });
     });
     
 });
 
-const columns = ['proveedor', 'producto', 'cantidad', 'descripcion'];
+const columns = [
+    {field: 'suplier', name: "Proveedor"}, 
+    {field: 'product', name: "Nombrer producto"}, 
+    {field: 'amount', name: "Cantidad"}, 
+    {field: 'description', name: "Descripción"}, 
+];
 
 router.get("/", (req, res) => {
     res.render("products", { title: 'Products', columns: columns, data: products });
