@@ -24,7 +24,7 @@
                             <% if (column.field !== 'products') { %>
                                 <%= info[column.field] %>
                             <% } else { %>
-                                <a href="/suplier/<%= info.id %>">
+                                <a href="/products/<%= info.id %>">
                                     <img src="img/boxs.png" alt="Productos" style="width: 20px; height: auto;">
                                 </a>    
                             <% } %>
@@ -54,8 +54,22 @@
                 </div>
                 <div class="modal-body">
                     <input id="form-id" style="display: none;">
+                    <% if (title === 'product') { %>
+                        <div class="form-floating">
+                            <select class="form-select" id="floatingSelectGrid">
+                                <option selected>Nombres proveedores</option>
+                                <% supliers.forEach(suplier => { %>
+                                  <option value="<%= suplier.id %>"><%= suplier.name %></option>
+                                <% }) %>
+                              </select>
+                              %>
+                            </select>
+                            <label for="floatingSelectGrid">Works with selects</label>
+                          </div>
+                      
+                    <% } %>
                     <% columns.forEach(column => { %>
-                        <% if (column.field !== 'products') { %>
+                        <% if (column.field !== 'products' && column.field !== 'suplier' ) { %>
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1"><%= column.name %></span>
                                 <input type="text" class="form-control" id="form-<%= column.field %>" value="" aria-label="field" aria-describedby="basic-addon1">

@@ -7,11 +7,13 @@
       "direction": "Ciudad A",
       "products": [
         {
+          "id": "producto-a1-id",
           "name": "Producto A1",
           "amount": 50,
           "description": "Descripción del Producto A1"
         },
         {
+          "id": "producto-a2-id",
           "name": "Producto A2",
           "amount": 30,
           "description": "Descripción del Producto A2"
@@ -25,11 +27,13 @@
       "direction": "Ciudad B",
       "products": [
         {
+          "id": "producto-b1-id",
           "name": "Producto B1",
           "amount": 20,
           "description": "Descripción del Producto B1"
         },
         {
+          "id": "producto-b2-id",
           "name": "Producto B2",
           "amount": 40,
           "description": "Descripción del Producto B2"
@@ -43,11 +47,13 @@
       "direction": "Ciudad C",
       "products": [
         {
+          "id": "producto-c1-id",
           "name": "Producto C1",
           "amount": 10,
           "description": "Descripción del Producto C1"
         },
         {
+          "id": "producto-c2-id",
           "name": "Producto C2",
           "amount": 25,
           "description": "Descripción del Producto C2"
@@ -61,11 +67,13 @@
       "direction": "Ciudad D",
       "products": [
         {
+          "id": "producto-d1-id",
           "name": "Producto D1",
           "amount": 15,
           "description": "Descripción del Producto D1"
         },
         {
+          "id": "producto-d2-id",
           "name": "Producto D2",
           "amount": 35,
           "description": "Descripción del Producto D2"
@@ -79,11 +87,13 @@
       "direction": "Ciudad E",
       "products": [
         {
+          "id": "producto-e1-id",
           "name": "Producto E1",
           "amount": 22,
           "description": "Descripción del Producto E1"
         },
         {
+          "id": "producto-e2-id",
           "name": "Producto E2",
           "amount": 18,
           "description": "Descripción del Producto E2"
@@ -97,11 +107,13 @@
       "direction": "Ciudad F",
       "products": [
         {
+          "id": "producto-f1-id",
           "name": "Producto F1",
           "amount": 8,
           "description": "Descripción del Producto F1"
         },
         {
+          "id": "producto-f2-id",
           "name": "Producto F2",
           "amount": 42,
           "description": "Descripción del Producto F2"

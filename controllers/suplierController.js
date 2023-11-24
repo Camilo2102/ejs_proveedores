@@ -3,16 +3,7 @@ const { writeData } = require('../utils/fileUtil');
 
 const { v4: uuidv4 } = require('uuid');
 
-const getSupliers = () => {
-    return data.supliers.map(proveedores => {
-        return {
-            id: proveedores.id,
-            name: proveedores.name,
-            phone: proveedores.phone,
-            direction: proveedores.direction
-        }
-    })
-}
+const {getSupliers} = require("../services/suplierService")
 
 const columns = [
     { field: 'name', name: "Nombre" },
