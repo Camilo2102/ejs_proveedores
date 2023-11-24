@@ -3,15 +3,15 @@ const data = require("../public/data/data");
 module.exports = {
     getProductData (suplierId) {
         if(suplierId){
-            const fitleredData = data.supliers.find(suplier => suplier.id = suplierId);
+            const suplierFinded = data.supliers.find(suplier => suplier.id = suplierId);
            
-            return fitleredData.products.map((suplier) => (
+            return suplierFinded.products.map((product) => (
                 {
-                    id: suplier.id,
-                    suplier: suplier.name,
-                    product: suplier.name,
-                    amount: suplier.amount,
-                    description: suplier.description
+                    id: product.id,
+                    suplier: suplierFinded.name,
+                    product: product.name,
+                    amount: product.amount,
+                    description: product.description
                 }
                 ))
             }
@@ -21,6 +21,7 @@ module.exports = {
         data.supliers.forEach(suplier => {
             suplier.products.forEach(product => {
                 products.push({
+                    id: product.id,
                     suplier: suplier.name,
                     product: product.name,
                     amount: product.amount,

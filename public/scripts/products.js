@@ -16,17 +16,8 @@ const deleteDataContainer = document.getElementById("delete_data");
 
 let update = false;
 
-const dataFilePath = 'data/data.json';
-
-fetch(dataFilePath)
-  .then(response => response.json())
-  .then(data => {
-    // Aquí puedes usar los datos cargados
-    console.log(data);
-  })
-  .catch(error => console.error('Error al cargar el archivo JSON:', error));
-
 const setUpdateData = (data) => {
+    console.log(data);
     formId.value = data.id;
     formProduct.value = data.product;
     formAmount.value = data.amount;
