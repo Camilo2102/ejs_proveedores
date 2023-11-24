@@ -2,9 +2,9 @@ const updateBtn = document.getElementById("btn_update");
 const closeBtn = document.getElementById("close_btn");
 const closeDeleteBtn = document.getElementById("close_delete_btn");
 
-const formName = document.getElementById("form-name");
-const formPhone = document.getElementById("form-phone");
-const formDirection = document.getElementById("form-direction");
+const formProduct = document.getElementById("form-product");
+const formAmount = document.getElementById("form-amount");
+const formDescription = document.getElementById("form-description");
 const formId = document.getElementById("form-id");
 const tableBody = document.getElementById("table_body");
 
@@ -16,9 +16,9 @@ let update = false;
 
 const setUpdateData = (data) => {
     formId.value = data.id;
-    formName.value = data.name;
-    formPhone.value = data.phone;
-    formDirection.value = data.direction;
+    formProduct.value = data.product;
+    formAmount.value = data.amount;
+    formDescription.value = data.description;
 }
 
 const setDeleteData = (id) => {
@@ -38,9 +38,9 @@ const setDeleteData = (id) => {
 const getFomrData = () => {
     return {
         id: formId.value,
-        name: formName.value,
-        phone: formPhone.value,
-        direction: formDirection.value
+        product: formProduct.value,
+        amount: formAmount.value,
+        description: formDescription.value
     }
 }
 
@@ -77,9 +77,9 @@ start();
 
 btnCreate.addEventListener('click', ()=>{
     formId.value = null;
-    formName.value = null;
-    formPhone.value = null;
-    formDirection.value = null;
+    formProduct.value = null;
+    formAmount.value = null;
+    formDescription.value = null;
     update = false;
 })
 
