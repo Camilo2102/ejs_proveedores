@@ -4,8 +4,10 @@ module.exports = {
     getProductData (suplierId) {
         if(suplierId){
             const fitleredData = data.supliers.find(suplier => suplier.id = suplierId);
+           
             return fitleredData.products.map((suplier) => (
                 {
+                    id: suplier.id,
                     suplier: suplier.name,
                     product: suplier.name,
                     amount: suplier.amount,

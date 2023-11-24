@@ -156,7 +156,7 @@ const createRegister = (suplier) => {
 
 const updateSuplier = () => {
     const suplier = getFomrData();
-
+    console.log(suplier)
     fetch(`http://localhost:3000/suplier/update/${suplier.id}`,{
         method: "PUT",
         body: JSON.stringify(suplier),

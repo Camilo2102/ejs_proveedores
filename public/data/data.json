@@ -2,7 +2,7 @@
   "supliers": [
     {
       "id": "a340b343-ae56-4585-b225-a6dd410cef33",
-      "name": "Proveedor uno",
+      "name": "Proveedor unoqa",
       "phone": "123-456-7890",
       "direction": "Ciudad A",
       "products": [
@@ -17,6 +17,12 @@
           "name": "Producto A2",
           "amount": 30,
           "description": "Descripción del Producto A2"
+        },
+        {
+          "id": "5cae8ad4-3f0c-4aed-99b7-f28ec75f347b",
+          "name": "fre",
+          "amount": "fre",
+          "description": "fer"
         }
       ]
     },
@@ -117,6 +123,12 @@
           "name": "Producto F2",
           "amount": 42,
           "description": "Descripción del Producto F2"
+        },
+        {
+          "id": "8a39f604-eb8b-4a56-8e17-dc7cdafa436f",
+          "name": "refr",
+          "amount": "ferff",
+          "description": "erf"
         }
       ]
     },
@@ -125,6 +137,20 @@
       "name": "Proveedora hermosa",
       "phone": "3123231289",
       "direction": "CALLE23",
+      "products": [
+        {
+          "id": "058eb8b6-ccca-45c0-9e10-972862cd4b09",
+          "name": "fwef",
+          "amount": "weew",
+          "description": "ewew"
+        }
+      ]
+    },
+    {
+      "id": "887064e2-b586-4cb4-ad88-463c4620169c",
+      "name": "rew",
+      "phone": "324235",
+      "direction": "retre",
       "products": []
     }
   ]

@@ -54,9 +54,9 @@
                 </div>
                 <div class="modal-body">
                     <input id="form-id" style="display: none;">
-                    <% if (title === 'product') { %>
+                    <% if (title === 'products') { %>
                         <div class="form-floating">
-                            <select class="form-select" id="floatingSelectGrid">
+                            <select class="form-select" id="select_suplier_id">
                                 <option selected>Nombres proveedores</option>
                                 <% supliers.forEach(suplier => { %>
                                   <option value="<%= suplier.id %>"><%= suplier.name %></option>

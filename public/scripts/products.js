@@ -1,11 +1,13 @@
+
 const updateBtn = document.getElementById("btn_update");
 const closeBtn = document.getElementById("close_btn");
 const closeDeleteBtn = document.getElementById("close_delete_btn");
 
+const formId = document.getElementById("form-id");
 const formProduct = document.getElementById("form-product");
 const formAmount = document.getElementById("form-amount");
 const formDescription = document.getElementById("form-description");
-const formId = document.getElementById("form-id");
+const selectId = document.getElementById("select_suplier_id");
 const tableBody = document.getElementById("table_body");
 
 const btnCreate = document.getElementById("btn_create")
@@ -13,6 +15,16 @@ const btnDelete = document.getElementById("btn_delete")
 const deleteDataContainer = document.getElementById("delete_data");
 
 let update = false;
+
+const dataFilePath = 'data/data.json';
+
+fetch(dataFilePath)
+  .then(response => response.json())
+  .then(data => {
+    // Aquí puedes usar los datos cargados
+    console.log(data);
+  })
+  .catch(error => console.error('Error al cargar el archivo JSON:', error));
 
 const setUpdateData = (data) => {
     formId.value = data.id;
@@ -38,6 +50,7 @@ const setDeleteData = (id) => {
 const getFomrData = () => {
     return {
         id: formId.value,
+        supplierId: selectId.value,
         product: formProduct.value,
         amount: formAmount.value,
         description: formDescription.value
@@ -74,9 +87,8 @@ const start = () => {
 
 start();
 
-
 btnCreate.addEventListener('click', ()=>{
-    formId.value = null;
+    selectId.value = null;
     formProduct.value = null;
     formAmount.value = null;
     formDescription.value = null;
@@ -85,8 +97,7 @@ btnCreate.addEventListener('click', ()=>{
 
 btnDelete.addEventListener("click", () => {
     const deleteId = btnDelete.getAttribute("value");
-
-    fetch(`http://localhost:3000/suplier/delete/${deleteId}`,{
+    fetch(`http://localhost:3000/products/delete/${deleteId}`,{
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -95,6 +106,8 @@ btnDelete.addEventListener("click", () => {
         closeDeleteBtn.click();
         return res.json()
     }).then(res => {
+        console.log()
+        console.log(res.data.id)
         deleteRegister(res.data.id);
     }).catch(err => {
         console.error(err);
@@ -103,15 +116,15 @@ btnDelete.addEventListener("click", () => {
 })
 
 const updateRegister = (suplier) => {
-    const tdName = document.getElementById("name_"+suplier.id);
-    const tdPhone = document.getElementById("phone_"+suplier.id);
-    const tdDirection = document.getElementById("direction_" + suplier.id);
+    const tdName = document.getElementById("product_"+suplier.id);
+    const tdAmount = document.getElementById("amount_"+suplier.id);
+    const tdDescition = document.getElementById("description_" + suplier.id);
     const updateBTN = document.getElementById("updateBtn_" + suplier.id);
     updateBTN.setAttribute("value", JSON.stringify(suplier))
 
-    tdName.innerHTML = suplier.name;
-    tdPhone.innerHTML = suplier.phone;
-    tdDirection.innerHTML = suplier.direction;
+    tdName.innerHTML = suplier.product;
+    tdAmount.innerHTML = suplier.amount;
+    tdDescition.innerHTML = suplier.description;
 }
 
 const deleteRegister = (id) => {
@@ -132,34 +145,36 @@ const crudButons = (suplier) => {
 </td>`
 }
 
-const productButon = (suplier) => {
-    return `<td>
-    <a href="/suplierProducts/${suplier.name}">
-        <img src="img/boxs.png" alt="Productos" style="width: 20px; height: auto;">
-    </a></td>`
-}
-
 const createRegister = (suplier) => {
-    tableBody.innerHTML += `
-    <tr id="row_${suplier.id}">
-        <td id="name_${suplier.id}"> ${suplier.name} </td>
-        <td id="phone_${suplier.id}"> ${suplier.phone} </td>
-        <td id="direction_${suplier.id}"> ${suplier.direction}</td>
-        ${productButon(suplier)}
-        ${crudButons(suplier)}
-    
-    </tr>    `
-
-    asignUpdateCallbacks();
-    asignDeleteCallbacks();
+    const rutaArchivo = 'data/data.json';
+    fetch(rutaArchivo)
+    .then(response => response.json())
+    .then(data => {
+        const matchingSuplier = data.supliers.find(sup => sup.id === suplier.supplierId);
+        tableBody.innerHTML += `
+        <tr id="row_${suplier.id}">
+            <td id="id_${suplier.id}"> ${matchingSuplier.name} </td>
+            <td id="product_${suplier.id}"> ${suplier.product} </td>
+            <td id="amount_${suplier.id}"> ${suplier.amount}</td>
+            <td id="description_${suplier.id}"> ${suplier.description}</td>
+            ${crudButons(suplier)}
+        
+        </tr>    `
+        asignUpdateCallbacks();
+        asignDeleteCallbacks();
+    })
+    .catch(error => {
+        console.error('Error al cargar el archivo JSON:', error);
+    });
+   
 }
 
-const updateSuplier = () => {
-    const suplier = getFomrData();
-
-    fetch(`http://localhost:3000/suplier/update/${suplier.id}`,{
+const updateProduct = () => {
+    const product = getFomrData();
+    console.log(product)
+    fetch(`http://localhost:3000/products/update/${product.id}`,{
         method: "PUT",
-        body: JSON.stringify(suplier),
+        body: JSON.stringify(product),
         headers: {
             "Content-Type": "application/json"
         }
@@ -167,18 +182,18 @@ const updateSuplier = () => {
         closeBtn.click();
         return res.json()
     }).then(res => {
-        updateRegister(res.data);
+        updateRegister(product);
     }).catch(err => {
         console.error(err);
     })
 }
 
-const createSuplier = () => {
-    const suplier = getFomrData();
-
-    fetch("http://localhost:3000/suplier/create",{
+const createProduct = () => {
+    const product = getFomrData();
+    console.log(product)
+    fetch("http://localhost:3000/products/create",{
         method: "POST",
-        body: JSON.stringify(suplier),
+        body: JSON.stringify(product),
         headers: {
             "Content-Type": "application/json"
         }
@@ -186,7 +201,7 @@ const createSuplier = () => {
         closeBtn.click();
         return res.json()
     }).then(res => {
-        createRegister(res.data);
+        createRegister(product);
     }).catch(err => {
         console.error(err);
     })
@@ -194,8 +209,8 @@ const createSuplier = () => {
 
 updateBtn.addEventListener("click", () => {
     if(update){
-        updateSuplier();
+        updateProduct();
     } else {
-        createSuplier();
+        createProduct();
     }
 })
