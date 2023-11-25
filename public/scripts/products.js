@@ -7,7 +7,15 @@ const formId = document.getElementById("form-id");
 const formProduct = document.getElementById("form-product");
 const formAmount = document.getElementById("form-amount");
 const formDescription = document.getElementById("form-description");
+
+const validationProduct = document.getElementById("validation-product");
+const validationAmount = document.getElementById("validation-amount");
+const validationDescription = document.getElementById("validation-description");
+const validationFull = document.getElementById("validation-full")
+
 const selectId = document.getElementById("select_suplier_id");
+const validacionSelectedId = document.getElementById("validation-selected-id");
+
 const tableBody = document.getElementById("table_body");
 
 const btnCreate = document.getElementById("btn_create")
@@ -37,6 +45,133 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+function getSelectedText() {
+    var selectedText = '';
+
+    if (window.getSelection) {
+        selectedText = window.getSelection().toString();
+    } else if (document.selection && document.selection.type !== 'Control') {
+        selectedText = document.selection.createRange().text;
+    }
+
+    return selectedText;
+}
+
+
+formProduct.addEventListener('input', function (event) {
+    var input = this.value;
+    var selectedText = getSelectedText();
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+    if (!/[a-zA-Z]/.test(input)) {
+        validationProduct.textContent = 'Ingrese solo letras.';
+        validationProduct.style.display = 'block';
+    } else if (input.length < 4) {
+        validationProduct.textContent = 'Mayor a tres';
+        validationProduct.style.display = 'block';
+    } else {
+        validationProduct.textContent = '';
+        validationProduct.style.display = 'none';
+    }
+});
+
+formProduct.addEventListener('keydown', function (event) {
+    var key = event.key;
+    var input = this.value;
+    var selectedText = getSelectedText();
+
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+
+    if (!/[a-zA-Z]/.test(key)) {
+        event.preventDefault();
+        validationProduct.textContent = 'Ingrese solo letras.';
+        validationProduct.style.display = 'block';
+    } else if (input.length < 4) {
+        validationProduct.textContent = 'Mayor a tres';
+        validationProduct.style.display = 'block';
+    } else {
+        validationProduct.textContent = '';
+        validationProduct.style.display = 'none';
+    }
+});
+
+formAmount.addEventListener('input', function (event) {
+    var input = this.value;
+    var selectedText = getSelectedText();
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+    if (!/^\d+$/.test(input)) {
+        validationAmount.textContent = 'Ingrese solo números.';
+        validationAmount.style.display = 'block';
+    } else if (input.length < 1) {
+        validationAmount.textContent = 'Ingrese al menos un número.';
+        validationAmount.style.display = 'block';
+    } else {
+        validationAmount.textContent = '';
+        validationAmount.style.display = 'none';
+    }
+});
+
+formAmount.addEventListener('keydown', function (event) {
+    var key = event.key;
+    var input = this.value;
+    var selectedText = getSelectedText();
+
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+
+    if (!/^\d+$/.test(key)  && key !== 'Backspace') {
+        event.preventDefault();
+        validationAmount.textContent = 'Ingrese solo números.';
+        validationAmount.style.display = 'block';
+    } else if (input.length === 0 && key === '0') {
+        event.preventDefault();
+        validationAmount.textContent = 'Ingrese al menos un número diferente de cero.';
+        validationAmount.style.display = 'block';
+    } else {
+        validationAmount.textContent = '';
+        validationAmount.style.display = 'none';
+    }
+});
+
+formDescription.addEventListener('input', function (event) {
+    var input = this.value;
+    var selectedText = getSelectedText();
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+    if (input.length < 5) {
+        validationDescription.textContent = 'Ingrese al menos cinco caracteres.';
+        validationDescription.style.display = 'block';
+    } else {
+        validationDescription.textContent = '';
+        validationDescription.style.display = 'none';
+    }
+});
+
+formDescription.addEventListener('keydown', function (event) {
+    var input = this.value;
+    if (input.length < 5) {
+        validationDescription.textContent = 'Ingrese al menos cinco caracteres.';
+        validationDescription.style.display = 'block';
+    } else {
+        validationDescription.textContent = '';
+        validationDescription.style.display = 'none';
+    }
+});
+
+selectId.addEventListener('change', () =>{
+    if(selectId.value === ""){
+        validacionSelectedId.textContent = 'Debe de seleccionar un proveedor'
+    }else{
+        validacionSelectedId.textContent = ''
+    }
+})
 
 let update = false;
 
@@ -176,6 +311,7 @@ const getSelectedSupplierName = () => {
 
 const createRegister = (suplier) => {
     const selectedSupplierName = getSelectedSupplierName();
+   
     tableBody.innerHTML += `
     <tr id="row_${suplier.id}">
         <td id="id_${suplier.id}"> ${selectedSupplierName} </td>
@@ -219,6 +355,7 @@ const createProduct = () => {
         closeBtn.click();
         return res.json()
     }).then(res => {
+        
         createRegister(product);
     }).catch(err => {
         console.error(err);
@@ -226,6 +363,13 @@ const createProduct = () => {
 }
 
 updateBtn.addEventListener("click", () => {
+    if(validationProduct.textContent !== '' || validationAmount.textContent !== '' || validationDescription.textContent !== '' || validacionSelectedId.textContent !== ''){
+        return;
+    }else if(formProduct.value === '' || formAmount === '' || formDescription === '' || selectId.value === "" ){
+        validationFull.textContent = 'Todos los campos son obligatorios'
+        return;
+    }
+
     if(update){
         updateProduct();
     } else {

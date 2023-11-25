@@ -1,7 +1,7 @@
 {
   "supliers": [
     {
-      "id": "a340b343-ae56-4585-b225-a6dd410cef33",
+      "id": "9f32c324-5f01-446a-9c93-bafa9f76e8b3",
       "name": "Proveedor unoqa",
       "phone": "123-456-7890",
       "direction": "Ciudad A",
@@ -57,6 +57,24 @@
           "name": "Producto C2",
           "amount": 25,
           "description": "Descripción del Producto C2"
+        },
+        {
+          "id": "8e600471-3824-4ddf-9d33-7aa3d6aa3f61",
+          "name": "rtrrr",
+          "amount": "45",
+          "description": "tgbytny"
+        },
+        {
+          "id": "d0d0c6ad-24c4-463f-9a89-0a075fea458a",
+          "name": "ertretre",
+          "amount": "43545",
+          "description": "tryrytr"
+        },
+        {
+          "id": "e424646c-24f5-4ec0-8313-068267d2c5b6",
+          "name": "trttrtrrt",
+          "amount": "5454",
+          "description": "trtrtrtr"
         }
       ]
     },
@@ -97,6 +115,12 @@
           "name": "Producto E2",
           "amount": 18,
           "description": "Descripción del Producto E2"
+        },
+        {
+          "id": "8e708ffc-fe3b-44fe-b09a-6c725cfec7c0",
+          "name": "rwertretre",
+          "amount": "4343543",
+          "description": "ertergtrtr"
         }
       ]
     },
@@ -133,6 +157,27 @@
           "description": "ewew"
         }
       ]
+    },
+    {
+      "id": "cbbb1ce0-e754-405f-97ea-fd3689e7c9b0",
+      "name": "23432ewrwerew",
+      "phone": "3243245",
+      "direction": "erter",
+      "products": []
+    },
+    {
+      "id": "e546e768-26ea-4d22-b3be-9a1575a155f6",
+      "name": "aas",
+      "phone": "45435",
+      "direction": "4343543",
+      "products": []
+    },
+    {
+      "id": "ca810f5a-f051-4afe-abb9-37b47c80c408",
+      "name": "ere",
+      "phone": "1234567890",
+      "direction": "432543",
+      "products": []
     }
   ]
 }

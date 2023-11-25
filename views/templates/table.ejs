@@ -49,7 +49,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="updateModalLabel">Actualizar <%=title%></h1>
+                    <h1 class="modal-title fs-5" id="updateModalLabel">Agregar <%=title%></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -63,6 +63,7 @@
                             </select>
                     %>
                             <label for="floatingSelectGrid" id="label_suplir_select">Nombres proveedores</label>
+                            <div id="validation-selected-id" style="color: red; font-size: 12px; margin-top: -10px;"></div>
                         </div>
                       
                     <% } %>
@@ -72,9 +73,13 @@
                                 <span class="input-group-text" id="basic-addon1"><%= column.name %></span>
                                 <input type="text" class="form-control" id="form-<%= column.field %>" value="" aria-label="field" aria-describedby="basic-addon1">
                             </div>
+                            <div id="validation-<%= column.field %>" style="color: red; font-size: 12px; margin-top: -10px;"></div>
+                            
                         <% } %>
                     <% }) %>
+                    <div id="validation-full" style="color: red; font-size: 12px; margin-top: -10px;"></div>
                 </div>
+              
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_btn">Cerrar</button>
                     <button type="button" class="btn btn-warning" id="btn_update">Guardar cambios</button>

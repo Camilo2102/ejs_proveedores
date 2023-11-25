@@ -5,6 +5,12 @@ const closeDeleteBtn = document.getElementById("close_delete_btn");
 const formName = document.getElementById("form-name");
 const formPhone = document.getElementById("form-phone");
 const formDirection = document.getElementById("form-direction");
+
+const validationName = document.getElementById("validation-name");
+const validationPhone = document.getElementById("validation-phone");
+const validationDirection = document.getElementById("validation-direction");
+const validationFull = document.getElementById("validation-full")
+
 const formId = document.getElementById("form-id");
 const tableBody = document.getElementById("table_body");
 
@@ -13,6 +19,133 @@ const btnDelete = document.getElementById("btn_delete")
 const deleteDataContainer = document.getElementById("delete_data");
 
 let update = false;
+
+function getSelectedText() {
+    var selectedText = '';
+
+    if (window.getSelection) {
+        selectedText = window.getSelection().toString();
+    } else if (document.selection && document.selection.type !== 'Control') {
+        selectedText = document.selection.createRange().text;
+    }
+
+    return selectedText;
+}
+
+
+formName.addEventListener('input', function (event) {
+    var input = this.value;
+    var selectedText = getSelectedText();
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+    if (!/[a-zA-Z]/.test(input)) {
+        validationName.textContent = 'Ingrese solo letras.';
+        validationName.style.display = 'block';
+    } else if (input.length < 4) {
+        validationName.textContent = 'Mayor a tres';
+        validationName.style.display = 'block';
+    } else {
+        validationName.textContent = '';
+        validationName.style.display = 'none';
+    }
+});
+
+formName.addEventListener('keydown', function (event) {
+    var key = event.key;
+    var input = this.value;
+    var selectedText = getSelectedText();
+
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+
+    if (!/[a-zA-Z]/.test(key)) {
+        event.preventDefault();
+        validationName.textContent = 'Ingrese solo letras.';
+        validationName.style.display = 'block';
+    } else if (input.length < 4) {
+        validationName.textContent = 'Mayor a tres';
+        validationName.style.display = 'block';
+    } else {
+        validationName.textContent = '';
+        validationName.style.display = 'none';
+    }
+});
+
+
+formPhone.addEventListener('input', function (event) {
+    var input = this.value;
+    var selectedText = getSelectedText();
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+    if (!/^\d+$/.test(input)) {
+        validationPhone.textContent = 'Ingrese solo números.';
+        validationPhone.style.display = 'block';
+    } else if (input.length !== 10) {
+        validationPhone.textContent = 'El número de celular tiene diez digitos';
+        validationPhone.style.display = 'block';
+    } else {
+        validationPhone.textContent = '';
+        validationPhone.style.display = 'none';
+    }
+});
+
+formPhone.addEventListener('keydown', function (event) {
+    var key = event.key;
+    var input = this.value;
+    var selectedText = getSelectedText();
+
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+
+    if (key !== 'Backspace' && !/^\d+$/.test(key)) {
+        event.preventDefault();
+        validationPhone.textContent = 'Ingrese solo números.';
+        validationPhone.style.display = 'block';
+    } else if (input.length !== 10) {
+        validationPhone.textContent = 'El número de celular tiene diez digitos';
+        validationPhone.style.display = 'block';
+    } else {
+        validationPhone.textContent = '';
+        validationPhone.style.display = 'none';
+    }
+});
+
+formDirection.addEventListener('input', function (event) {
+    var input = this.value;
+    var selectedText = getSelectedText();
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+    if (input.length < 5) {
+        validationDirection.textContent = 'Mayor a cuatro';
+        validationDirection.style.display = 'block';
+    } else {
+        validationDirection.textContent = '';
+        validationDirection.style.display = 'none';
+    }
+});
+
+formDirection.addEventListener('keydown', function (event) {
+    var key = event.key;
+    var input = this.value;
+    var selectedText = getSelectedText();
+
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+
+    if (input.length < 3) {
+        validationDirection.textContent = 'Mayor a tres';
+        validationDirection.style.display = 'block';
+    } else {
+        validationDirection.textContent = '';
+        validationDirection.style.display = 'none';
+    }
+});
 
 const setUpdateData = (data) => {
     formId.value = data.id;
@@ -78,6 +211,8 @@ start();
 
 
 btnCreate.addEventListener('click', ()=>{
+    console.log('name')
+    console.log(formName.value);
     formId.value = null;
     formName.value = null;
     formPhone.value = null;
@@ -195,6 +330,12 @@ const createSuplier = () => {
 }
 
 updateBtn.addEventListener("click", () => {
+    if(validationName.textContent !== '' || validationPhone.textContent !== '' || validationDirection.textContent !== ''){
+        return;
+    }else if(formName.value === '' || formPhone.value === '' || formDirection.value === ''){
+        validationFull.textContent = 'Todos los campos son obligatorios';
+        return;
+    }
     if(update){
         updateSuplier();
     } else {
