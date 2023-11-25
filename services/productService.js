@@ -1,10 +1,12 @@
 const data = require("../public/data/data");
 
 module.exports = {
-    getProductData (suplierId) {
-        if(suplierId){
-            const suplierFinded = data.supliers.find(suplier => suplier.id = suplierId);
-           
+    getProductData(suplierId) {
+        if (suplierId) {
+            const suplierFinded = data.supliers.find(suplier => suplier.id === suplierId);
+
+            console.log(suplierFinded);
+
             return suplierFinded.products.map((product) => (
                 {
                     id: product.id,
@@ -13,11 +15,11 @@ module.exports = {
                     amount: product.amount,
                     description: product.description
                 }
-                ))
-            }
-            
+            ))
+        }
+
         const products = [];
-    
+
         data.supliers.forEach(suplier => {
             suplier.products.forEach(product => {
                 products.push({
@@ -29,7 +31,7 @@ module.exports = {
                 });
             });
         });
-    
+
         return products;
     }
 }

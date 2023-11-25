@@ -44,72 +44,7 @@
             <% }) %>   
         </tbody>
     </table>
-
-    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="updateModalLabel">Agregar <%= title %></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input id="form-id" style="display: none;">
-                    <% if (code === 'products') { %>
-                        <div class="form-floating mb-3">
-                            <select class="form-select" id="select_suplier_id">
-                                <% supliers.forEach(suplier => { %>
-                                  <option value="<%= suplier.id %>"><%= suplier.name %></option>
-                                <% }) %>
-                            </select>
-                    %>
-                            <label for="floatingSelectGrid" id="label_suplir_select">Nombres proveedores</label>
-                            <div id="validation-selected-id" style="color: red; font-size: 12px; margin-top: -10px;"></div>
-                        </div>
-                      
-                    <% } %>
-                    <% columns.forEach(column => { %>
-                        <% if (column.field !== 'products' && column.field !== 'suplier' ) { %>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1"><%= column.name %></span>
-                                <input type="text" class="form-control" id="form-<%= column.field %>" value="" aria-label="field" aria-describedby="basic-addon1">
-                            </div>
-                            <div id="validation-<%= column.field %>" style="color: red; font-size: 12px; margin-top: -10px;"></div>
-                            
-                        <% } %>
-                    <% }) %>
-                    <div id="validation-full" style="color: red; font-size: 12px; margin-top: -10px;"></div>
-                </div>
-              
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_btn">Cerrar</button>
-                    <button type="button" class="btn btn-warning" id="btn_update">Guardar cambios</button>
-                </div>
-            </div>
-        </div>
-    </div>
     
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="deleteModalLabel">Eliminar <%=title%></h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input id="form-id" style="display: none;">
-                    <ul class="text-start" id="delete_data">
-                        
-                    </ul>
-                    <% if(code === 'suplier') { %>
-                        <p> <strong>Importante:</strong> Ten en cuenta que al eliminar a este proveedor, se eliminarán también todos los productos asociados a este.</p>    
-                    <%}%>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_delete_btn">Cerrar</button>
-                    <button type="button" class="btn btn-danger" id="btn_delete">Eliminar</button>
-                </div>
-            </div>
-        </div>
-    </div>
+    
 
 

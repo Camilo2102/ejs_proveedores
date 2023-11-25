@@ -2,7 +2,7 @@
   "supliers": [
     {
       "id": "40a6269c-ff65-4c10-8d82-c272df096d15",
-      "name": "uyuyusa",
+      "name": "uyuyusas",
       "phone": "123-456-7890",
       "direction": "Ciudad A",
       "products": []
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "id": "40a6269c-ff65-4c10-8d82-c272df096d15",
+      "id": "40a6413c-ff65-4c10-8d82-c272df096d15",
       "name": "Proveedor Tres",
       "phone": "555-123-4567",
       "direction": "Ciudad C",
@@ -154,6 +154,41 @@
       "name": "Proveedora hermosa",
       "phone": "3123231289",
       "direction": "CALLE23",
+      "products": []
+    },
+    {
+      "id": "ac652019-71f8-48d7-b18c-19306addfc25",
+      "name": "fdasdf",
+      "phone": "312321321312",
+      "direction": "fdasdf",
+      "products": []
+    },
+    {
+      "id": "939a1363-d84c-4e85-8de4-cd20bf430296",
+      "name": "fadssdf",
+      "phone": "312231312321",
+      "direction": "fdsadf",
+      "products": []
+    },
+    {
+      "id": "28da3a92-ce30-46a7-ba40-0683e4537a8e",
+      "name": "fasddf",
+      "phone": "2312312321",
+      "direction": "fdsadfsdadfs",
+      "products": []
+    },
+    {
+      "id": "fae1fdbf-e772-46da-abfe-72320d12a76a",
+      "name": "fassdf",
+      "phone": "21312323123",
+      "direction": "fdsaasdfasff",
+      "products": []
+    },
+    {
+      "id": "24f20ee4-2f99-46f0-a3b5-94d6f67c26a4",
+      "name": "fdasdfs",
+      "phone": "321321312321",
+      "direction": "sdfcasfddasf",
       "products": []
     }
   ]

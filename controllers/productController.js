@@ -16,6 +16,7 @@ const columns = [
 module.exports = {
     getProducts(req, res) {
         const {suplierId} = req.params;
+
         const products = getProductData(suplierId);
         const supliers = getSupliers();
 

@@ -251,6 +251,12 @@ const createRegister = (suplier) => {
 
     asignUpdateCallbacks();
     asignDeleteCallbacks();
+
+    Swal.fire({
+        title: "¡Exito!",
+        text: "Se ha creado el producto con exito",
+        icon: "success"
+    })
 }
 
 const updateSuplier = () => {

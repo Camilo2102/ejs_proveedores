@@ -24,28 +24,10 @@ const deleteDataContainer = document.getElementById("delete_data");
 const modalLabel = document.getElementById("updateModalLabel");
 
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('[name="btn_show_update"]').forEach(function (button) {
-        button.addEventListener('click', function () {
-            document.getElementById('select_suplier_id').style.display = 'none';
-            document.getElementById('label_suplir_select').style.display = 'none';
-        });
-    });
+const selectSuplier =  document.getElementById('select_suplier_id');
+const selectContainer =  document.getElementById('suplier_select_container');
 
-    document.getElementById('btn_create').addEventListener('click', function () {
-        let path = window.location.pathname;
-        if (path === '/products') {
-            document.getElementById('select_suplier_id').style.display = 'block';
-            document.getElementById('label_suplir_select').style.display = 'block';
-        } else {
-            document.getElementById('select_suplier_id').style.display = 'none';
-            document.getElementById('label_suplir_select').style.display = 'none';
-        }
-
-    });
-
-});
-
+const suplierId = window.location.pathname.split("/")[2];
 
 function getSelectedText() {
     let selectedText = '';
@@ -181,6 +163,7 @@ const asignUpdateCallbacks = () => {
             const value = JSON.parse(btn.getAttribute("value"));
             update = true;
             modalLabel.innerText = "Actualizar producto";
+            selectContainer.style.display = 'none';
             setUpdateData(value);
         })
     })
@@ -200,13 +183,18 @@ const asignDeleteCallbacks = () => {
 const start = () => {
     asignUpdateCallbacks();
     asignDeleteCallbacks();
+
 }
 
 start();
 
 btnCreate.addEventListener('click', () => {
+    selectContainer.style.display = 'flex';
     modalLabel.innerText = "Agregar producto";
-    selectId.value = null;
+
+    selectId.disabled = !!suplierId;
+    
+    selectId.value = suplierId ?? null;
     formProduct.value = null;
     formAmount.value = null;
     formDescription.value = null;
@@ -291,8 +279,10 @@ const createRegister = (product) => {
         <td id="description_${product.id}"> ${product.description}</td>
         ${crudButons(product)}
     </tr>`
+
     asignUpdateCallbacks();
     asignDeleteCallbacks();
+
     Swal.fire({
         title: "¡Exito!",
         text: "Se ha creado el producto con exito",
