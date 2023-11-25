@@ -18,7 +18,8 @@ module.exports = {
         const {suplierId} = req.params;
         const products = getProductData(suplierId);
         const supliers = getSupliers();
-        res.render("products", { title: 'products', columns: columns, data: products, supliers: supliers });
+        console.log(req.path)
+        res.render("products", { title: 'products', columns: columns, data: products, supliers: supliers, req: req });
     },
 
     saveProduct(req, res) {
@@ -53,19 +54,15 @@ module.exports = {
     try {
         const productIdToUpdate = req.params.id; 
         const productData = req.body; 
-
-        // Busca el proveedor que contiene el producto a actualizar
         const suplier = data.supliers.find((sup) => sup.products.some((product) => product.id === productIdToUpdate));
 
         if (!suplier) {
             return res.status(404).json({ status: false, message: "Proveedor no encontrado" });
         }
 
-        // Busca el índice del producto dentro de los productos del proveedor
         const productIndex = suplier.products.findIndex(product => product.id === productIdToUpdate);
 
         if (productIndex !== -1) {
-            // Actualiza el producto
             suplier.products[productIndex] = { ...suplier.products[productIndex], ...productData };
             writeData(data);
 
@@ -79,26 +76,25 @@ module.exports = {
     }
 },
 
-    deleteProduct(req, res) {
-        try {
-            const { suplierId, productId } = req.params;
-            const suplier = data.supliers.find(suplier => suplier.id === suplierId);
-    
-            if (suplier) {
-                const updatedProducts = suplier.products.filter(product => product.id !== productId);
-                suplier.products = updatedProducts;
-                writeData(data);
-    
-                res.status(200).json({ status: true, data: { id: productId } });
-            } else {
-                res.status(404).json({ status: false, message: "Proveedor no encontrado" });
-            }
-        } catch (error) {
-            console.error("Error durante la eliminación del producto:", error);
-            res.status(500).json({ status: false, message: "Error interno del servidor" });
+deleteProduct(req, res) {
+    try {
+        const productIdToDelete = req.params.id; 
+        const suplier = data.supliers.find(suplier => suplier.products.some((product) => product.id === productIdToDelete));
+
+        if (suplier) {
+            const updatedProducts = suplier.products.filter(product => product.id !== productIdToDelete);
+            suplier.products = updatedProducts;
+            writeData(data);
+
+            res.status(200).json({ status: true, data: { id: productIdToDelete } });
+        } else {
+            res.status(404).json({ status: false, message: "Proveedor no encontrado" });
         }
+    } catch (error) {
+        console.error("Error durante la eliminación del producto:", error);
+        res.status(500).json({ status: false, message: "Error interno del servidor" });
     }
-    
+}
 
 
 }

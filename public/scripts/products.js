@@ -14,6 +14,30 @@ const btnCreate = document.getElementById("btn_create")
 const btnDelete = document.getElementById("btn_delete")
 const deleteDataContainer = document.getElementById("delete_data");
 
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[name="btn_show_update"]').forEach(function (button) {
+        button.addEventListener('click', function () {
+            document.getElementById('select_suplier_id').style.display = 'none';
+            document.getElementById('label_suplir_select').style.display = 'none';
+        });
+    });
+
+    document.getElementById('btn_create').addEventListener('click', function () {
+        var path = window.location.pathname;
+        if(path === '/products'){
+            document.getElementById('select_suplier_id').style.display = 'block';
+            document.getElementById('label_suplir_select').style.display = 'block';
+        }else{
+            document.getElementById('select_suplier_id').style.display = 'none';
+            document.getElementById('label_suplir_select').style.display = 'none';
+        }
+       
+    });
+});
+
+
+
 let update = false;
 
 const setUpdateData = (data) => {
@@ -24,7 +48,8 @@ const setUpdateData = (data) => {
 }
 
 const setDeleteData = (id) => {
-    const name = document.getElementById("name_"+id).textContent;
+    console.log(id)
+    const name = document.getElementById("product_"+id).textContent;
     const amount = document.getElementById("amount_"+id).textContent;
     const description = document.getElementById("description_" + id).textContent;
 
@@ -32,7 +57,7 @@ const setDeleteData = (id) => {
 
     deleteDataContainer.innerHTML = `
         <li>Nombre: ${name}</li>
-        <li>Teléfono: ${amount}</li>
+        <li>Cantidad: ${amount}</li>
         <li>Dirección: ${description}</li>
     `
 }
@@ -73,6 +98,7 @@ const asignDeleteCallbacks = () => {
     deleteBtns.forEach(btn => {
         btn.addEventListener("click", () => {
             const deleteId = btn.getAttribute("value");
+            console.log(deleteId);
             setDeleteData(deleteId);
         })  
     })
@@ -142,10 +168,17 @@ const crudButons = (suplier) => {
 </td>`
 }
 
+const getSelectedSupplierName = () => {
+    const selectId = document.getElementById('select_suplier_id');
+    const selectedOption = selectId.options[selectId.selectedIndex];
+    return selectedOption.textContent;
+};
+
 const createRegister = (suplier) => {
+    const selectedSupplierName = getSelectedSupplierName();
     tableBody.innerHTML += `
     <tr id="row_${suplier.id}">
-        <td id="id_${suplier.id}"> ${suplier.selectId} </td>
+        <td id="id_${suplier.id}"> ${selectedSupplierName} </td>
         <td id="product_${suplier.id}"> ${suplier.product} </td>
         <td id="amount_${suplier.id}"> ${suplier.amount}</td>
         <td id="description_${suplier.id}"> ${suplier.description}</td>

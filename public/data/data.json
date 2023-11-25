@@ -37,30 +37,6 @@
           "name": "Producto B2",
           "amount": 40,
           "description": "Descripción del Producto B2"
-        },
-        {
-          "id": "05d2c22a-d0d4-44f4-9d2a-9676a91692c6",
-          "name": "aAAA",
-          "amount": "aAAA",
-          "description": "aAAA"
-        },
-        {
-          "id": "06c604eb-3d49-4743-8701-b5ff58170679",
-          "name": "a",
-          "amount": "s",
-          "description": "d"
-        },
-        {
-          "id": "81c623a0-010e-4f76-89ee-51636444e2a8",
-          "name": "jas",
-          "amount": "jas",
-          "description": "jas"
-        },
-        {
-          "id": "89e1155d-7dba-4140-ac0f-78dcbe2a83f9",
-          "name": "a",
-          "amount": "g",
-          "description": "4"
         }
       ]
     },
@@ -157,13 +133,6 @@
           "description": "ewew"
         }
       ]
-    },
-    {
-      "id": "887064e2-b586-4cb4-ad88-463c4620169c",
-      "name": "Proveedor Siete",
-      "phone": "324235",
-      "direction": "retre",
-      "products": []
     }
   ]
 }
