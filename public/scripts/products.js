@@ -13,7 +13,7 @@ const validationDescription = document.getElementById("validation-description");
 const validationFull = document.getElementById("validation-full")
 
 const selectId = document.getElementById("select_suplier_id");
-const validacionSelectedId = document.getElementById("validation-selected-id");
+const validationSelectedId = document.getElementById("validation-selected-id");
 
 const tableBody = document.getElementById("table_body");
 
@@ -80,12 +80,13 @@ function validKeydown(event, regex, longitudMinima = 1, text, validation) {
 }
 
 formProduct.addEventListener('input', function (event) {
-    validInput(event.target.value, /[a-zA-Z]/, 3, 'letras', validationProduct);
+    validInput(event.target.value, /^[a-zA-Z\s]+$/, 3, 'letras', validationProduct);
 });
 
 formProduct.addEventListener('keydown', function (event) {
-    validKeydown(event, /[a-zA-Z]/, 3, 'letras', validationProduct);
+    validKeydown(event, /^[a-zA-Z\s]+$/, 3, 'letras', validationProduct);
 });
+
 
 
 formAmount.addEventListener('input', function (event) {
@@ -106,9 +107,9 @@ formDescription.addEventListener('keydown', function (event) {
 
 selectId.addEventListener('change', () => {
     if (selectId.value === "") {
-        validacionSelectedId.textContent = 'Debe de seleccionar un proveedor';
+        validationSelectedId.textContent = 'Debe de seleccionar un proveedor';
     } else {
-        validacionSelectedId.textContent = '';
+        validationSelectedId.textContent = '';
     }
 })
 
@@ -274,7 +275,7 @@ const createRegister = (product) => {
     tableBody.innerHTML += `
     <tr id="row_${product.id}">
         <td id="id_${product.id}"> ${selectedSupplierName} </td>
-        <td id="product_${product.id}"> ${product.name} </td>
+        <td id="product_${product.id}"> ${product.product} </td>
         <td id="amount_${product.id}"> ${product.amount}</td>
         <td id="description_${product.id}"> ${product.description}</td>
         ${crudButons(product)}
@@ -328,7 +329,7 @@ const createProduct = () => {
 }
 
 updateBtn.addEventListener("click", () => {
-    if (validationProduct.textContent !== '' || validationAmount.textContent !== '' || validationDescription.textContent !== '' || validacionSelectedId.textContent !== '') {
+    if (validationProduct.textContent !== '' || validationAmount.textContent !== '' || validationDescription.textContent !== '' || validationSelectedId.textContent !== '') {
         return;
     } else if (formProduct.value === '' || formAmount === '' || formDescription === '' || selectId.value === "") {
         validationFull.textContent = 'Todos los campos son obligatorios'

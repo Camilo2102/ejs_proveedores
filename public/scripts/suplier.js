@@ -72,13 +72,12 @@ function validKeydown(event, regex, longitudMinima = 1, text, validation) {
     }
 }
 
-
 formName.addEventListener('input', function (event) {
-    validInput(event.target.value, /[a-zA-Z]/, 4, 'letras', validationName);
+    validInput(event.target.value, /^[a-zA-Z\s]+$/, 4, 'letras', validationName);
 });
 
 formName.addEventListener('keydown', function (event) {
-    validKeydown(event, /[a-zA-Z]/, 4, 'letras', validationName);
+    validKeydown(event, /^[a-zA-Z\s]+$/, 4, 'letras', validationName);
 });
 
 formPhone.addEventListener('input', function (event) {

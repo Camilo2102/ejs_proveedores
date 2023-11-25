@@ -2,7 +2,7 @@
   "supliers": [
     {
       "id": "40a6269c-ff65-4c10-8d82-c272df096d15",
-      "name": "uyuyusas",
+      "name": "camilo",
       "phone": "123-456-7890",
       "direction": "Ciudad A",
       "products": []
@@ -14,15 +14,9 @@
       "direction": "Ciudad B",
       "products": [
         {
-          "id": "producto-b1-id",
-          "name": "Producto B1",
-          "amount": 20,
-          "description": "Descripción del Producto B1"
-        },
-        {
           "id": "producto-b2-id",
-          "name": "Producto B2",
-          "amount": 40,
+          "name": "Producto Baa",
+          "amount": "40",
           "description": "Descripción del Producto B2"
         },
         {
@@ -38,10 +32,10 @@
           "description": "fdsafdas"
         },
         {
-          "id": "42f06963-d8a3-4084-838c-9d988b0e56f0",
-          "name": "dfas",
-          "amount": "31",
-          "description": "fdasfas"
+          "id": "170fca68-21d8-4ccd-adbf-93bfed6d24bc",
+          "name": "undefineds",
+          "amount": "43543",
+          "description": "retrytr"
         }
       ]
     },
@@ -80,6 +74,30 @@
           "name": "trttrtrrt",
           "amount": "5454",
           "description": "trtrtrtr"
+        },
+        {
+          "id": "6f8cac85-436a-4005-95ce-2542923f6a1c",
+          "name": "ksc uhjdsjhjds",
+          "amount": "345",
+          "description": "retrete"
+        },
+        {
+          "id": "ac9efd42-7eb0-494a-8688-40d7fb3dee32",
+          "name": "erreter",
+          "amount": "4544453",
+          "description": "treeter"
+        },
+        {
+          "id": "042b7774-4461-4e32-b0f9-d984c613f8ba",
+          "name": "dsfewewwww",
+          "amount": "343543",
+          "description": "ertre"
+        },
+        {
+          "id": "7aff30f6-8562-4424-ba01-d522072076d1",
+          "name": "retree",
+          "amount": "4354",
+          "description": "54343453"
         }
       ]
     },
@@ -100,6 +118,12 @@
           "name": "Producto D2",
           "amount": 35,
           "description": "Descripción del Producto D2"
+        },
+        {
+          "id": "b889b2ef-7a12-438a-ab9c-4ea8881057f1",
+          "name": "dfsdfs",
+          "amount": "43543",
+          "description": "ertre"
         }
       ]
     },
@@ -143,8 +167,8 @@
         },
         {
           "id": "producto-f2-id",
-          "name": "Producto F2",
-          "amount": 42,
+          "name": "Producto F2a",
+          "amount": "42",
           "description": "Descripción del Producto F2"
         }
       ]
@@ -189,6 +213,20 @@
       "name": "fdasdfs",
       "phone": "321321312321",
       "direction": "sdfcasfddasf",
+      "products": []
+    },
+    {
+      "id": "389787e9-e86c-436b-87c5-eb8b0bf75efd",
+      "name": "adefe",
+      "phone": "435435435",
+      "direction": "retretre",
+      "products": []
+    },
+    {
+      "id": "d98c34a9-329f-4f5f-b9f6-bb8a42c79eee",
+      "name": "sndnks sjndksn",
+      "phone": "7887787878",
+      "direction": "dsfdsfds",
       "products": []
     }
   ]
