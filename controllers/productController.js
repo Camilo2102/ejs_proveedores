@@ -49,33 +49,36 @@ module.exports = {
             res.status(500).json({ status: false, message: "Error interno del servidor" });
         }
     },
-    updateProduct(req, res) {
-        try {
-            const productIdToUpdate = req.params.productId; 
-            const productData = req.body; 
+   updateProduct(req, res) {
+    try {
+        const productIdToUpdate = req.params.id; 
+        const productData = req.body; 
 
-            const suplierId = req.params.suplierId;
-            const suplier = data.supliers.find((sup) => sup.id === suplierId);
+        // Busca el proveedor que contiene el producto a actualizar
+        const suplier = data.supliers.find((sup) => sup.products.some((product) => product.id === productIdToUpdate));
 
-            if (!suplier) {
-                return res.status(404).json({ status: false, message: "Proveedor no encontrado" });
-            }
-
-            const productIndex = suplier.products.findIndex(product => product.id === productIdToUpdate);
-
-            if (productIndex !== -1) {
-                suplier.products[productIndex] = { ...suplier.products[productIndex], ...productData };
-                writeData(data);
-
-                res.status(200).json({ status: true, data: suplier.products[productIndex] });
-            } else {
-                res.status(404).json({ status: false, message: "Producto no encontrado en el proveedor" });
-            }
-        } catch (error) {
-            console.error("Error durante la actualización del producto:", error);
-            res.status(500).json({ status: false, message: "Error interno del servidor" });
+        if (!suplier) {
+            return res.status(404).json({ status: false, message: "Proveedor no encontrado" });
         }
-    },
+
+        // Busca el índice del producto dentro de los productos del proveedor
+        const productIndex = suplier.products.findIndex(product => product.id === productIdToUpdate);
+
+        if (productIndex !== -1) {
+            // Actualiza el producto
+            suplier.products[productIndex] = { ...suplier.products[productIndex], ...productData };
+            writeData(data);
+
+            res.status(200).json({ status: true, data: suplier.products[productIndex] });
+        } else {
+            res.status(404).json({ status: false, message: "Producto no encontrado en el proveedor" });
+        }
+    } catch (error) {
+        console.error("Error durante la actualización del producto:", error);
+        res.status(500).json({ status: false, message: "Error interno del servidor" });
+    }
+},
+
     deleteProduct(req, res) {
         try {
             const { suplierId, productId } = req.params;

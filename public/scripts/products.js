@@ -17,7 +17,6 @@ const deleteDataContainer = document.getElementById("delete_data");
 let update = false;
 
 const setUpdateData = (data) => {
-    console.log(data);
     formId.value = data.id;
     formProduct.value = data.product;
     formAmount.value = data.amount;
@@ -26,15 +25,15 @@ const setUpdateData = (data) => {
 
 const setDeleteData = (id) => {
     const name = document.getElementById("name_"+id).textContent;
-    const phone = document.getElementById("phone_"+id).textContent;
-    const direction = document.getElementById("direction_" + id).textContent;
+    const amount = document.getElementById("amount_"+id).textContent;
+    const description = document.getElementById("description_" + id).textContent;
 
     btnDelete.setAttribute("value", id);
 
     deleteDataContainer.innerHTML = `
         <li>Nombre: ${name}</li>
-        <li>Teléfono: ${phone}</li>
-        <li>Dirección: ${direction}</li>
+        <li>Teléfono: ${amount}</li>
+        <li>Dirección: ${description}</li>
     `
 }
 
@@ -43,6 +42,15 @@ const getFomrData = () => {
         id: formId.value,
         supplierId: selectId.value,
         product: formProduct.value,
+        amount: formAmount.value,
+        description: formDescription.value
+    }
+}
+
+const getFomrDataUpdate = () => {
+    return {
+        id: formId.value,
+        name: formProduct.value,
         amount: formAmount.value,
         description: formDescription.value
     }
@@ -62,7 +70,6 @@ const asignUpdateCallbacks = () => {
 
 const asignDeleteCallbacks = () => {
     const deleteBtns = document.getElementsByName("btn_show_delete");
-
     deleteBtns.forEach(btn => {
         btn.addEventListener("click", () => {
             const deleteId = btn.getAttribute("value");
@@ -97,8 +104,6 @@ btnDelete.addEventListener("click", () => {
         closeDeleteBtn.click();
         return res.json()
     }).then(res => {
-        console.log()
-        console.log(res.data.id)
         deleteRegister(res.data.id);
     }).catch(err => {
         console.error(err);
@@ -107,13 +112,14 @@ btnDelete.addEventListener("click", () => {
 })
 
 const updateRegister = (suplier) => {
+   
     const tdName = document.getElementById("product_"+suplier.id);
     const tdAmount = document.getElementById("amount_"+suplier.id);
     const tdDescition = document.getElementById("description_" + suplier.id);
     const updateBTN = document.getElementById("updateBtn_" + suplier.id);
     updateBTN.setAttribute("value", JSON.stringify(suplier))
 
-    tdName.innerHTML = suplier.product;
+    tdName.innerHTML = suplier.name;
     tdAmount.innerHTML = suplier.amount;
     tdDescition.innerHTML = suplier.description;
 }
@@ -137,32 +143,20 @@ const crudButons = (suplier) => {
 }
 
 const createRegister = (suplier) => {
-    const rutaArchivo = 'data/data.json';
-    fetch(rutaArchivo)
-    .then(response => response.json())
-    .then(data => {
-        const matchingSuplier = data.supliers.find(sup => sup.id === suplier.supplierId);
-        tableBody.innerHTML += `
-        <tr id="row_${suplier.id}">
-            <td id="id_${suplier.id}"> ${matchingSuplier.name} </td>
-            <td id="product_${suplier.id}"> ${suplier.product} </td>
-            <td id="amount_${suplier.id}"> ${suplier.amount}</td>
-            <td id="description_${suplier.id}"> ${suplier.description}</td>
-            ${crudButons(suplier)}
-        
-        </tr>    `
-        asignUpdateCallbacks();
-        asignDeleteCallbacks();
-    })
-    .catch(error => {
-        console.error('Error al cargar el archivo JSON:', error);
-    });
-   
+    tableBody.innerHTML += `
+    <tr id="row_${suplier.id}">
+        <td id="id_${suplier.id}"> ${suplier.selectId} </td>
+        <td id="product_${suplier.id}"> ${suplier.product} </td>
+        <td id="amount_${suplier.id}"> ${suplier.amount}</td>
+        <td id="description_${suplier.id}"> ${suplier.description}</td>
+        ${crudButons(suplier)}
+    </tr>`
+    asignUpdateCallbacks();
+    asignDeleteCallbacks();
 }
 
 const updateProduct = () => {
-    const product = getFomrData();
-    console.log(product)
+    const product = getFomrDataUpdate();
     fetch(`http://localhost:3000/products/update/${product.id}`,{
         method: "PUT",
         body: JSON.stringify(product),
@@ -181,7 +175,7 @@ const updateProduct = () => {
 
 const createProduct = () => {
     const product = getFomrData();
-    console.log(product)
+   
     fetch("http://localhost:3000/products/create",{
         method: "POST",
         body: JSON.stringify(product),

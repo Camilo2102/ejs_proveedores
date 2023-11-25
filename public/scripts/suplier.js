@@ -22,7 +22,9 @@ const setUpdateData = (data) => {
 }
 
 const setDeleteData = (id) => {
+    console.log(id)
     const name = document.getElementById("name_"+id).textContent;
+    console.log(name)
     const phone = document.getElementById("phone_"+id).textContent;
     const direction = document.getElementById("direction_" + id).textContent;
 
