@@ -49,12 +49,12 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="updateModalLabel">Agregar <%=title%></h1>
+                    <h1 class="modal-title fs-5" id="updateModalLabel">Agregar <%= title %></h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <input id="form-id" style="display: none;">
-                    <% if (title === 'products') { %>
+                    <% if (code === 'products') { %>
                         <div class="form-floating mb-3">
                             <select class="form-select" id="select_suplier_id">
                                 <% supliers.forEach(suplier => { %>
@@ -100,7 +100,9 @@
                     <ul class="text-start" id="delete_data">
                         
                     </ul>
-                    <p> <strong>Importante:</strong> Ten en cuenta que al eliminar a este proveedor, se eliminarán también todos los productos asociados a este.</p>
+                    <% if(code === 'suplier') { %>
+                        <p> <strong>Importante:</strong> Ten en cuenta que al eliminar a este proveedor, se eliminarán también todos los productos asociados a este.</p>    
+                    <%}%>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_delete_btn">Cerrar</button>

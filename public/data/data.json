@@ -2,17 +2,10 @@
   "supliers": [
     {
       "id": "40a6269c-ff65-4c10-8d82-c272df096d15",
-      "name": "uyuyu",
+      "name": "uyuyusa",
       "phone": "123-456-7890",
       "direction": "Ciudad A",
-      "products": [
-        {
-          "id": "producto-a2-id",
-          "name": "Producto A2",
-          "amount": 30,
-          "description": "Descripción del Producto A2"
-        }
-      ]
+      "products": []
     },
     {
       "id": "d1c84240-b331-4544-a38e-772cb754b9da",
@@ -37,6 +30,18 @@
           "name": "ferer",
           "amount": "43",
           "description": "435retreerg"
+        },
+        {
+          "id": "e9f4eae4-5224-4db4-bf29-af105feb6067",
+          "name": "fdsadfa",
+          "amount": "321123",
+          "description": "fdsafdas"
+        },
+        {
+          "id": "42f06963-d8a3-4084-838c-9d988b0e56f0",
+          "name": "dfas",
+          "amount": "31",
+          "description": "fdasfas"
         }
       ]
     },
@@ -149,14 +154,7 @@
       "name": "Proveedora hermosa",
       "phone": "3123231289",
       "direction": "CALLE23",
-      "products": [
-        {
-          "id": "058eb8b6-ccca-45c0-9e10-972862cd4b09",
-          "name": "fwef",
-          "amount": "weew",
-          "description": "ewew"
-        }
-      ]
+      "products": []
     }
   ]
 }

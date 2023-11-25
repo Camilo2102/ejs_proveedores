@@ -18,6 +18,8 @@ const btnCreate = document.getElementById("btn_create")
 const btnDelete = document.getElementById("btn_delete")
 const deleteDataContainer = document.getElementById("delete_data");
 
+const modalLabel = document.getElementById("updateModalLabel");
+
 let update = false;
 
 function getSelectedText() {
@@ -134,6 +136,7 @@ const asignUpdateCallbacks = () => {
         btn.addEventListener("click", () => {
             const value = JSON.parse(btn.getAttribute("value"));
             update = true;
+            modalLabel.innerText = "Actualizar Proveedor";
             setUpdateData(value);
         })
     })
@@ -159,8 +162,7 @@ start();
 
 
 btnCreate.addEventListener('click', ()=>{
-    console.log('name')
-    console.log(formName.value);
+    modalLabel.innerText = "Agregar Proveedor";
     formId.value = null;
     formName.value = null;
     formPhone.value = null;
@@ -197,11 +199,23 @@ const updateRegister = (suplier) => {
     tdName.innerHTML = suplier.name;
     tdPhone.innerHTML = suplier.phone;
     tdDirection.innerHTML = suplier.direction;
+
+    Swal.fire({
+        title: "¡Exito!",
+        text: "Se ha actualizado el proveedor con exito",
+        icon: "success"
+    })
 }
 
 const deleteRegister = (id) => {
     const trToDelete = document.getElementById(`row_${id}`);
     trToDelete.remove()
+
+    Swal.fire({
+        title: "¡Exito!",
+        text: "Se ha eliminado el proveedor con exito",
+        icon: "success"
+    })
 }
 
 const crudButons = (suplier) => {

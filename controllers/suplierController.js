@@ -17,7 +17,7 @@ module.exports = {
     getAllSupliers(req, res){
         try {
             const supliers = getSupliers();
-            res.render("suplier", { title: 'Suplier', columns, data: supliers });
+            res.render("suplier", { title: 'Proveedor', code: 'suplier', columns, data: supliers });
         } catch (error) {
             console.error("Error al obtener proveedores:", error);
             res.status(500).send("Error interno del servidor");

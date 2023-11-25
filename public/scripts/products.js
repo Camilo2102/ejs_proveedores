@@ -21,6 +21,8 @@ const btnCreate = document.getElementById("btn_create")
 const btnDelete = document.getElementById("btn_delete")
 const deleteDataContainer = document.getElementById("delete_data");
 
+const modalLabel = document.getElementById("updateModalLabel");
+
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('[name="btn_show_update"]').forEach(function (button) {
@@ -32,15 +34,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('btn_create').addEventListener('click', function () {
         let path = window.location.pathname;
-        if(path === '/products'){
+        if (path === '/products') {
             document.getElementById('select_suplier_id').style.display = 'block';
             document.getElementById('label_suplir_select').style.display = 'block';
-        }else{
+        } else {
             document.getElementById('select_suplier_id').style.display = 'none';
             document.getElementById('label_suplir_select').style.display = 'none';
         }
-       
+
     });
+
 });
 
 
@@ -76,7 +79,7 @@ function validInput(input, regex, longitudMinima = 1, text, validation) {
 function validKeydown(event, regex, longitudMinima = 1, text, validation) {
     let selectedText = getSelectedText();
     let key = event.key;
-    let input =  event.target.value;
+    let input = event.target.value;
     if (selectedText.length > 0) {
         input = selectedText;
     }
@@ -119,10 +122,10 @@ formDescription.addEventListener('keydown', function (event) {
     validKeydown(event, /.*/, 5, 'caracteres', validationDescription);
 });
 
-selectId.addEventListener('change', () =>{
-    if(selectId.value === ""){
+selectId.addEventListener('change', () => {
+    if (selectId.value === "") {
         validacionSelectedId.textContent = 'Debe de seleccionar un proveedor';
-    }else{
+    } else {
         validacionSelectedId.textContent = '';
     }
 })
@@ -138,8 +141,8 @@ const setUpdateData = (data) => {
 
 const setDeleteData = (id) => {
     console.log(id)
-    const name = document.getElementById("product_"+id).textContent;
-    const amount = document.getElementById("amount_"+id).textContent;
+    const name = document.getElementById("product_" + id).textContent;
+    const amount = document.getElementById("amount_" + id).textContent;
     const description = document.getElementById("description_" + id).textContent;
 
     btnDelete.setAttribute("value", id);
@@ -177,6 +180,7 @@ const asignUpdateCallbacks = () => {
         btn.addEventListener("click", () => {
             const value = JSON.parse(btn.getAttribute("value"));
             update = true;
+            modalLabel.innerText = "Actualizar producto";
             setUpdateData(value);
         })
     })
@@ -189,7 +193,7 @@ const asignDeleteCallbacks = () => {
             const deleteId = btn.getAttribute("value");
             console.log(deleteId);
             setDeleteData(deleteId);
-        })  
+        })
     })
 }
 
@@ -200,7 +204,8 @@ const start = () => {
 
 start();
 
-btnCreate.addEventListener('click', ()=>{
+btnCreate.addEventListener('click', () => {
+    modalLabel.innerText = "Agregar producto";
     selectId.value = null;
     formProduct.value = null;
     formAmount.value = null;
@@ -210,7 +215,7 @@ btnCreate.addEventListener('click', ()=>{
 
 btnDelete.addEventListener("click", () => {
     const deleteId = btnDelete.getAttribute("value");
-    fetch(`http://localhost:3000/products/delete/${deleteId}`,{
+    fetch(`http://localhost:3000/products/delete/${deleteId}`, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json"
@@ -226,32 +231,44 @@ btnDelete.addEventListener("click", () => {
 
 })
 
-const updateRegister = (suplier) => {
-   
-    const tdName = document.getElementById("product_"+suplier.id);
-    const tdAmount = document.getElementById("amount_"+suplier.id);
-    const tdDescition = document.getElementById("description_" + suplier.id);
-    const updateBTN = document.getElementById("updateBtn_" + suplier.id);
-    updateBTN.setAttribute("value", JSON.stringify(suplier))
+const updateRegister = (product) => {
 
-    tdName.innerHTML = suplier.name;
-    tdAmount.innerHTML = suplier.amount;
-    tdDescition.innerHTML = suplier.description;
+    const tdName = document.getElementById("product_" + product.id);
+    const tdAmount = document.getElementById("amount_" + product.id);
+    const tdDescition = document.getElementById("description_" + product.id);
+    const updateBTN = document.getElementById("updateBtn_" + product.id);
+    updateBTN.setAttribute("value", JSON.stringify(product))
+
+    tdName.innerHTML = product.name;
+    tdAmount.innerHTML = product.amount;
+    tdDescition.innerHTML = product.description;
+
+    Swal.fire({
+        title: "¡Exito!",
+        text: "Se ha actualizado el producto con exito",
+        icon: "success"
+    })
 }
 
 const deleteRegister = (id) => {
     const trToDelete = document.getElementById(`row_${id}`);
     trToDelete.remove()
+
+    Swal.fire({
+        title: "¡Exito!",
+        text: "Se ha eliminado el producto con exito",
+        icon: "success"
+    })
 }
 
-const crudButons = (suplier) => {
+const crudButons = (product) => {
     return `<td>
-    <a type="button" name="btn_show_update" data-bs-toggle="modal" data-bs-target="#updateModal" id="updateBtn_${suplier.id}" value='${JSON.stringify(suplier)}'>
+    <a type="button" name="btn_show_update" data-bs-toggle="modal" data-bs-target="#updateModal" id="updateBtn_${product.id}" value='${JSON.stringify(product)}'>
         <img src="../img/pen.png" alt="Actualizar producto" style="width: 20px; height: auto;">
     </a>
 </td>
 <td>
-    <a type="button" name="btn_show_delete" data-bs-toggle="modal" data-bs-target="#deleteModal" id="deleteBtn_${suplier.id}" value="${suplier.id}">
+    <a type="button" name="btn_show_delete" data-bs-toggle="modal" data-bs-target="#deleteModal" id="deleteBtn_${product.id}" value="${product.id}">
         <img src="../img/trash.png" alt="Eliminar producto" style="width: 20px; height: auto;">
     </a>
 </td>`
@@ -263,24 +280,29 @@ const getSelectedSupplierName = () => {
     return selectedOption.textContent;
 };
 
-const createRegister = (suplier) => {
+const createRegister = (product) => {
     const selectedSupplierName = getSelectedSupplierName();
-   
+
     tableBody.innerHTML += `
-    <tr id="row_${suplier.id}">
-        <td id="id_${suplier.id}"> ${selectedSupplierName} </td>
-        <td id="product_${suplier.id}"> ${suplier.product} </td>
-        <td id="amount_${suplier.id}"> ${suplier.amount}</td>
-        <td id="description_${suplier.id}"> ${suplier.description}</td>
-        ${crudButons(suplier)}
+    <tr id="row_${product.id}">
+        <td id="id_${product.id}"> ${selectedSupplierName} </td>
+        <td id="product_${product.id}"> ${product.name} </td>
+        <td id="amount_${product.id}"> ${product.amount}</td>
+        <td id="description_${product.id}"> ${product.description}</td>
+        ${crudButons(product)}
     </tr>`
     asignUpdateCallbacks();
     asignDeleteCallbacks();
+    Swal.fire({
+        title: "¡Exito!",
+        text: "Se ha creado el producto con exito",
+        icon: "success"
+    })
 }
 
 const updateProduct = () => {
     const product = getFomrDataUpdate();
-    fetch(`http://localhost:3000/products/update/${product.id}`,{
+    fetch(`http://localhost:3000/products/update/${product.id}`, {
         method: "PUT",
         body: JSON.stringify(product),
         headers: {
@@ -298,8 +320,8 @@ const updateProduct = () => {
 
 const createProduct = () => {
     const product = getFomrData();
-   
-    fetch("http://localhost:3000/products/create",{
+
+    fetch("http://localhost:3000/products/create", {
         method: "POST",
         body: JSON.stringify(product),
         headers: {
@@ -316,14 +338,14 @@ const createProduct = () => {
 }
 
 updateBtn.addEventListener("click", () => {
-    if(validationProduct.textContent !== '' || validationAmount.textContent !== '' || validationDescription.textContent !== '' || validacionSelectedId.textContent !== ''){
+    if (validationProduct.textContent !== '' || validationAmount.textContent !== '' || validationDescription.textContent !== '' || validacionSelectedId.textContent !== '') {
         return;
-    }else if(formProduct.value === '' || formAmount === '' || formDescription === '' || selectId.value === "" ){
+    } else if (formProduct.value === '' || formAmount === '' || formDescription === '' || selectId.value === "") {
         validationFull.textContent = 'Todos los campos son obligatorios'
         return;
     }
 
-    if(update){
+    if (update) {
         updateProduct();
     } else {
         createProduct();

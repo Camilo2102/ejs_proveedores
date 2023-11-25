@@ -18,15 +18,13 @@ module.exports = {
         const {suplierId} = req.params;
         const products = getProductData(suplierId);
         const supliers = getSupliers();
-        console.log(req.path)
-        res.render("products", { title: 'products', columns: columns, data: products, supliers: supliers, req: req });
+
+        res.render("products", { title: 'Productos', code: 'products' , columns: columns, data: products, supliers: supliers });
     },
 
     saveProduct(req, res) {
         try {
             const supplierId = req.body.supplierId; 
-            console.log('este')
-            console.log(supplierId);
             const supplier = data.supliers.find((sup) => sup.id === supplierId);
 
             if (!supplier) {
