@@ -65,8 +65,8 @@ module.exports = {
         if (productIndex !== -1) {
             suplier.products[productIndex] = { ...suplier.products[productIndex], ...productData };
             writeData(data);
-
             res.status(200).json({ status: true, data: suplier.products[productIndex] });
+            
         } else {
             res.status(404).json({ status: false, message: "Producto no encontrado en el proveedor" });
         }
@@ -85,7 +85,6 @@ deleteProduct(req, res) {
             const updatedProducts = suplier.products.filter(product => product.id !== productIdToDelete);
             suplier.products = updatedProducts;
             writeData(data);
-
             res.status(200).json({ status: true, data: { id: productIdToDelete } });
         } else {
             res.status(404).json({ status: false, message: "Proveedor no encontrado" });

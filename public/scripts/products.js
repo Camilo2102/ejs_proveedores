@@ -1,4 +1,3 @@
-
 const updateBtn = document.getElementById("btn_update");
 const closeBtn = document.getElementById("close_btn");
 const closeDeleteBtn = document.getElementById("close_delete_btn");
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('btn_create').addEventListener('click', function () {
-        var path = window.location.pathname;
+        let path = window.location.pathname;
         if(path === '/products'){
             document.getElementById('select_suplier_id').style.display = 'block';
             document.getElementById('label_suplir_select').style.display = 'block';
@@ -46,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 function getSelectedText() {
-    var selectedText = '';
+    let selectedText = '';
 
     if (window.getSelection) {
         selectedText = window.getSelection().toString();
@@ -57,119 +56,74 @@ function getSelectedText() {
     return selectedText;
 }
 
-
-formProduct.addEventListener('input', function (event) {
-    var input = this.value;
-    var selectedText = getSelectedText();
+function validInput(input, regex, longitudMinima = 1, text, validation) {
+    let selectedText = getSelectedText();
     if (selectedText.length > 0) {
         input = selectedText;
     }
-    if (!/[a-zA-Z]/.test(input)) {
-        validationProduct.textContent = 'Ingrese solo letras.';
-        validationProduct.style.display = 'block';
-    } else if (input.length < 4) {
-        validationProduct.textContent = 'Mayor a tres';
-        validationProduct.style.display = 'block';
+    if (!regex.test(input)) {
+        validation.textContent = `Ingrese solo ${text}`;
+        validation.style.display = 'block';
+    } else if (input.length < longitudMinima) {
+        validation.textContent = `Mayor a ${longitudMinima}`;
+        validation.style.display = 'block';
     } else {
-        validationProduct.textContent = '';
-        validationProduct.style.display = 'none';
+        validation.textContent = '';
+        validation.style.display = 'none';
     }
+}
+
+function validKeydown(event, regex, longitudMinima = 1, text, validation) {
+    let selectedText = getSelectedText();
+    let key = event.key;
+    let input =  event.target.value;
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+
+    if (!regex.test(key) && key !== 'Backspace') {
+        event.preventDefault();
+        validation.textContent = `Ingrese solo ${text}`;
+        validation.style.display = 'block';
+    } else if (input.length < longitudMinima) {
+        validation.textContent = `Mayor a ${longitudMinima}`;
+        validation.style.display = 'block';
+    } else {
+        validation.textContent = '';
+        validation.style.display = 'none';
+    }
+}
+
+formProduct.addEventListener('input', function (event) {
+    validInput(event.target.value, /[a-zA-Z]/, 3, 'letras', validationProduct);
 });
 
 formProduct.addEventListener('keydown', function (event) {
-    var key = event.key;
-    var input = this.value;
-    var selectedText = getSelectedText();
-
-    if (selectedText.length > 0) {
-        input = selectedText;
-    }
-
-    if (!/[a-zA-Z]/.test(key)) {
-        event.preventDefault();
-        validationProduct.textContent = 'Ingrese solo letras.';
-        validationProduct.style.display = 'block';
-    } else if (input.length < 4) {
-        validationProduct.textContent = 'Mayor a tres';
-        validationProduct.style.display = 'block';
-    } else {
-        validationProduct.textContent = '';
-        validationProduct.style.display = 'none';
-    }
+    validKeydown(event, /[a-zA-Z]/, 3, 'letras', validationProduct);
 });
 
+
 formAmount.addEventListener('input', function (event) {
-    var input = this.value;
-    var selectedText = getSelectedText();
-    if (selectedText.length > 0) {
-        input = selectedText;
-    }
-    if (!/^\d+$/.test(input)) {
-        validationAmount.textContent = 'Ingrese solo números.';
-        validationAmount.style.display = 'block';
-    } else if (input.length < 1) {
-        validationAmount.textContent = 'Ingrese al menos un número.';
-        validationAmount.style.display = 'block';
-    } else {
-        validationAmount.textContent = '';
-        validationAmount.style.display = 'none';
-    }
+    validInput(event.target.value, /^\d+$/, 1, 'números', validationAmount);
 });
 
 formAmount.addEventListener('keydown', function (event) {
-    var key = event.key;
-    var input = this.value;
-    var selectedText = getSelectedText();
-
-    if (selectedText.length > 0) {
-        input = selectedText;
-    }
-
-    if (!/^\d+$/.test(key)  && key !== 'Backspace') {
-        event.preventDefault();
-        validationAmount.textContent = 'Ingrese solo números.';
-        validationAmount.style.display = 'block';
-    } else if (input.length === 0 && key === '0') {
-        event.preventDefault();
-        validationAmount.textContent = 'Ingrese al menos un número diferente de cero.';
-        validationAmount.style.display = 'block';
-    } else {
-        validationAmount.textContent = '';
-        validationAmount.style.display = 'none';
-    }
+    validKeydown(event, /^\d+$/, 1, 'números', validationAmount);
 });
 
 formDescription.addEventListener('input', function (event) {
-    var input = this.value;
-    var selectedText = getSelectedText();
-    if (selectedText.length > 0) {
-        input = selectedText;
-    }
-    if (input.length < 5) {
-        validationDescription.textContent = 'Ingrese al menos cinco caracteres.';
-        validationDescription.style.display = 'block';
-    } else {
-        validationDescription.textContent = '';
-        validationDescription.style.display = 'none';
-    }
+    validInput(event.target.value, /.*/, 5, 'caracteres', validationDescription);
 });
 
 formDescription.addEventListener('keydown', function (event) {
-    var input = this.value;
-    if (input.length < 5) {
-        validationDescription.textContent = 'Ingrese al menos cinco caracteres.';
-        validationDescription.style.display = 'block';
-    } else {
-        validationDescription.textContent = '';
-        validationDescription.style.display = 'none';
-    }
+    validKeydown(event, /.*/, 5, 'caracteres', validationDescription);
 });
 
 selectId.addEventListener('change', () =>{
     if(selectId.value === ""){
-        validacionSelectedId.textContent = 'Debe de seleccionar un proveedor'
+        validacionSelectedId.textContent = 'Debe de seleccionar un proveedor';
     }else{
-        validacionSelectedId.textContent = ''
+        validacionSelectedId.textContent = '';
     }
 })
 
@@ -336,7 +290,7 @@ const updateProduct = () => {
         closeBtn.click();
         return res.json()
     }).then(res => {
-        updateRegister(product);
+        updateRegister(res.data);
     }).catch(err => {
         console.error(err);
     })
@@ -355,8 +309,7 @@ const createProduct = () => {
         closeBtn.click();
         return res.json()
     }).then(res => {
-        
-        createRegister(product);
+        createRegister(res.data);
     }).catch(err => {
         console.error(err);
     })

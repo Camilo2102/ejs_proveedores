@@ -32,119 +32,67 @@ function getSelectedText() {
     return selectedText;
 }
 
-
-formName.addEventListener('input', function (event) {
-    var input = this.value;
-    var selectedText = getSelectedText();
+function validInput(input, regex, longitudMinima = 1, text, validation) {
+    let selectedText = getSelectedText();
     if (selectedText.length > 0) {
         input = selectedText;
     }
-    if (!/[a-zA-Z]/.test(input)) {
-        validationName.textContent = 'Ingrese solo letras.';
-        validationName.style.display = 'block';
-    } else if (input.length < 4) {
-        validationName.textContent = 'Mayor a tres';
-        validationName.style.display = 'block';
+    if (!regex.test(input)) {
+        validation.textContent = `Ingrese solo ${text}`;
+        validation.style.display = 'block';
+    } else if (input.length < longitudMinima) {
+        validation.textContent = `Mayor a ${longitudMinima}`;
+        validation.style.display = 'block';
     } else {
-        validationName.textContent = '';
-        validationName.style.display = 'none';
+        validation.textContent = '';
+        validation.style.display = 'none';
     }
+}
+
+function validKeydown(event, regex, longitudMinima = 1, text, validation) {
+    let selectedText = getSelectedText();
+    let key = event.key;
+    let input =  event.target.value;
+    if (selectedText.length > 0) {
+        input = selectedText;
+    }
+
+    if (!regex.test(key) && key !== 'Backspace') {
+        event.preventDefault();
+        validation.textContent = `Ingrese solo ${text}`;
+        validation.style.display = 'block';
+    } else if (input.length < longitudMinima) {
+        validation.textContent = `Mayor a ${longitudMinima}`;
+        validation.style.display = 'block';
+    } else {
+        validation.textContent = '';
+        validation.style.display = 'none';
+    }
+}
+
+
+formName.addEventListener('input', function (event) {
+    validInput(event.target.value, /[a-zA-Z]/, 4, 'letras', validationName);
 });
 
 formName.addEventListener('keydown', function (event) {
-    var key = event.key;
-    var input = this.value;
-    var selectedText = getSelectedText();
-
-    if (selectedText.length > 0) {
-        input = selectedText;
-    }
-
-    if (!/[a-zA-Z]/.test(key)) {
-        event.preventDefault();
-        validationName.textContent = 'Ingrese solo letras.';
-        validationName.style.display = 'block';
-    } else if (input.length < 4) {
-        validationName.textContent = 'Mayor a tres';
-        validationName.style.display = 'block';
-    } else {
-        validationName.textContent = '';
-        validationName.style.display = 'none';
-    }
+    validKeydown(event, /[a-zA-Z]/, 4, 'letras', validationName);
 });
 
-
 formPhone.addEventListener('input', function (event) {
-    var input = this.value;
-    var selectedText = getSelectedText();
-    if (selectedText.length > 0) {
-        input = selectedText;
-    }
-    if (!/^\d+$/.test(input)) {
-        validationPhone.textContent = 'Ingrese solo números.';
-        validationPhone.style.display = 'block';
-    } else if (input.length !== 10) {
-        validationPhone.textContent = 'El número de celular tiene diez digitos';
-        validationPhone.style.display = 'block';
-    } else {
-        validationPhone.textContent = '';
-        validationPhone.style.display = 'none';
-    }
+    validInput(event.target.value, /^\d+$/, 9, 'números', validationPhone);
 });
 
 formPhone.addEventListener('keydown', function (event) {
-    var key = event.key;
-    var input = this.value;
-    var selectedText = getSelectedText();
-
-    if (selectedText.length > 0) {
-        input = selectedText;
-    }
-
-    if (key !== 'Backspace' && !/^\d+$/.test(key)) {
-        event.preventDefault();
-        validationPhone.textContent = 'Ingrese solo números.';
-        validationPhone.style.display = 'block';
-    } else if (input.length !== 10) {
-        validationPhone.textContent = 'El número de celular tiene diez digitos';
-        validationPhone.style.display = 'block';
-    } else {
-        validationPhone.textContent = '';
-        validationPhone.style.display = 'none';
-    }
+    validKeydown(event, /^\d+$/, 9, 'números', validationPhone);
 });
 
 formDirection.addEventListener('input', function (event) {
-    var input = this.value;
-    var selectedText = getSelectedText();
-    if (selectedText.length > 0) {
-        input = selectedText;
-    }
-    if (input.length < 5) {
-        validationDirection.textContent = 'Mayor a cuatro';
-        validationDirection.style.display = 'block';
-    } else {
-        validationDirection.textContent = '';
-        validationDirection.style.display = 'none';
-    }
+    validInput(event.target.value, /.*/, 5, 'carcateres', validationDirection);
 });
 
 formDirection.addEventListener('keydown', function (event) {
-    var key = event.key;
-    var input = this.value;
-    var selectedText = getSelectedText();
-
-    if (selectedText.length > 0) {
-        input = selectedText;
-    }
-
-    if (input.length < 3) {
-        validationDirection.textContent = 'Mayor a tres';
-        validationDirection.style.display = 'block';
-    } else {
-        validationDirection.textContent = '';
-        validationDirection.style.display = 'none';
-    }
+    validKeydown(event, /.*/, 5, 'caracteres', validationDirection);
 });
 
 const setUpdateData = (data) => {

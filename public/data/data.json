@@ -1,17 +1,11 @@
 {
   "supliers": [
     {
-      "id": "9f32c324-5f01-446a-9c93-bafa9f76e8b3",
-      "name": "Proveedor unoqa",
+      "id": "40a6269c-ff65-4c10-8d82-c272df096d15",
+      "name": "uyuyu",
       "phone": "123-456-7890",
       "direction": "Ciudad A",
       "products": [
-        {
-          "id": "producto-a1-id",
-          "name": "Producto A1A",
-          "amount": "50",
-          "description": "Descripción del Producto A1"
-        },
         {
           "id": "producto-a2-id",
           "name": "Producto A2",
@@ -37,6 +31,12 @@
           "name": "Producto B2",
           "amount": 40,
           "description": "Descripción del Producto B2"
+        },
+        {
+          "id": "63b048a5-5323-4ccb-9a4b-aea81afd4732",
+          "name": "ferer",
+          "amount": "43",
+          "description": "435retreerg"
         }
       ]
     },
@@ -157,27 +157,6 @@
           "description": "ewew"
         }
       ]
-    },
-    {
-      "id": "cbbb1ce0-e754-405f-97ea-fd3689e7c9b0",
-      "name": "23432ewrwerew",
-      "phone": "3243245",
-      "direction": "erter",
-      "products": []
-    },
-    {
-      "id": "e546e768-26ea-4d22-b3be-9a1575a155f6",
-      "name": "aas",
-      "phone": "45435",
-      "direction": "4343543",
-      "products": []
-    },
-    {
-      "id": "ca810f5a-f051-4afe-abb9-37b47c80c408",
-      "name": "ere",
-      "phone": "1234567890",
-      "direction": "432543",
-      "products": []
     }
   ]
 }
