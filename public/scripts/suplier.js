@@ -104,9 +104,7 @@ const setUpdateData = (data) => {
 }
 
 const setDeleteData = (id) => {
-    console.log(id)
     const name = document.getElementById("name_"+id).textContent;
-    console.log(name)
     const phone = document.getElementById("phone_"+id).textContent;
     const direction = document.getElementById("direction_" + id).textContent;
 
@@ -232,7 +230,7 @@ const crudButons = (suplier) => {
 
 const productButon = (suplier) => {
     return `<td>
-    <a href="/suplierProducts/${suplier.name}">
+    <a href="/products/${suplier.id}">
         <img src="img/boxs.png" alt="Productos" style="width: 20px; height: auto;">
     </a></td>`
 }
@@ -260,7 +258,6 @@ const createRegister = (suplier) => {
 
 const updateSuplier = () => {
     const suplier = getFomrData();
-    console.log(suplier)
     fetch(`http://localhost:3000/suplier/update/${suplier.id}`,{
         method: "PUT",
         body: JSON.stringify(suplier),

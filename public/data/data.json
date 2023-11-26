@@ -2,231 +2,174 @@
   "supliers": [
     {
       "id": "40a6269c-ff65-4c10-8d82-c272df096d15",
-      "name": "camilo",
-      "phone": "123-456-7890",
-      "direction": "Ciudad A",
-      "products": []
+      "name": "Camilo",
+      "phone": "3163049816",
+      "direction": "Carrera 15 # 45 - 67",
+      "products": [
+        {
+          "id": "8117e91b-3b33-4007-9c69-fb6abfdab352",
+          "name": "Chaquetas",
+          "amount": "10",
+          "description": "Son chauqetas impermeables"
+        },
+        {
+          "id": "2f7658b2-c017-4820-ab98-4830e0fa92b7",
+          "name": "Jeans",
+          "amount": "200",
+          "description": "Para hombre licrado"
+        },
+        {
+          "id": "b67e0952-6c26-49f3-990a-17aebea1dc10",
+          "name": "Camisas",
+          "amount": "100",
+          "description": "Camisas manga corta "
+        },
+        {
+          "id": "9c170ffb-c9ad-4d8a-b865-60051f194470",
+          "name": "Camisetas",
+          "amount": "5",
+          "description": "Unicolor"
+        },
+        {
+          "id": "e912f8e1-0468-47cb-be6d-0feb1841ef16",
+          "name": "Vestidos",
+          "amount": "67",
+          "description": "De gala"
+        }
+      ]
     },
     {
       "id": "d1c84240-b331-4544-a38e-772cb754b9da",
-      "name": "Proveedor Dos",
-      "phone": "987-654-3210",
-      "direction": "Ciudad B",
+      "name": "Eduardo",
+      "phone": "3183765423",
+      "direction": "Cra 25 # 56 - 78",
       "products": [
         {
           "id": "producto-b2-id",
           "name": "Producto Baa",
-          "amount": "40",
-          "description": "Descripción del Producto B2"
+          "amount": "30",
+          "description": "de 100 páginas",
+          "product": "Cuadernos"
         },
         {
           "id": "63b048a5-5323-4ccb-9a4b-aea81afd4732",
           "name": "ferer",
           "amount": "43",
-          "description": "435retreerg"
+          "description": "Paquetes de 50 colores",
+          "product": "Colores"
         },
         {
           "id": "e9f4eae4-5224-4db4-bf29-af105feb6067",
           "name": "fdsadfa",
-          "amount": "321123",
-          "description": "fdsafdas"
-        },
-        {
-          "id": "170fca68-21d8-4ccd-adbf-93bfed6d24bc",
-          "name": "undefineds",
-          "amount": "43543",
-          "description": "retrytr"
-        }
-      ]
-    },
-    {
-      "id": "40a6413c-ff65-4c10-8d82-c272df096d15",
-      "name": "Proveedor Tres",
-      "phone": "555-123-4567",
-      "direction": "Ciudad C",
-      "products": [
-        {
-          "id": "producto-c1-id",
-          "name": "Producto C1",
-          "amount": 10,
-          "description": "Descripción del Producto C1"
-        },
-        {
-          "id": "producto-c2-id",
-          "name": "Producto C2",
-          "amount": 25,
-          "description": "Descripción del Producto C2"
-        },
-        {
-          "id": "8e600471-3824-4ddf-9d33-7aa3d6aa3f61",
-          "name": "rtrrr",
           "amount": "45",
-          "description": "tgbytny"
+          "description": "Kit de reglas",
+          "product": "Reglas"
         },
         {
-          "id": "d0d0c6ad-24c4-463f-9a89-0a075fea458a",
-          "name": "ertretre",
-          "amount": "43545",
-          "description": "tryrytr"
+          "id": "1595eb2b-a164-45ac-8318-0fa203a1f945",
+          "name": "reter",
+          "amount": "46",
+          "description": "múltiples colores",
+          "product": "reter"
         },
         {
-          "id": "e424646c-24f5-4ec0-8313-068267d2c5b6",
-          "name": "trttrtrrt",
-          "amount": "5454",
-          "description": "trtrtrtr"
-        },
-        {
-          "id": "6f8cac85-436a-4005-95ce-2542923f6a1c",
-          "name": "ksc uhjdsjhjds",
-          "amount": "345",
-          "description": "retrete"
-        },
-        {
-          "id": "ac9efd42-7eb0-494a-8688-40d7fb3dee32",
-          "name": "erreter",
-          "amount": "4544453",
-          "description": "treeter"
-        },
-        {
-          "id": "042b7774-4461-4e32-b0f9-d984c613f8ba",
-          "name": "dsfewewwww",
-          "amount": "343543",
-          "description": "ertre"
-        },
-        {
-          "id": "7aff30f6-8562-4424-ba01-d522072076d1",
-          "name": "retree",
-          "amount": "4354",
-          "description": "54343453"
+          "id": "2dbafd2f-0eea-41a9-a008-191ced83c48c",
+          "name": "rgre",
+          "amount": "2",
+          "description": "De diferntes estilos",
+          "product": "Carpetas"
         }
       ]
     },
     {
-      "id": "9f32c324-5f01-446a-9c93-bafa9f76e8b3",
-      "name": "Proveedor Cuatro",
-      "phone": "111-222-3333",
-      "direction": "Ciudad D",
+      "id": "ad2f8d67-60c8-4f46-8c1a-bea93632640f",
+      "name": "Jazmin",
+      "phone": "3145678990",
+      "direction": "Carrera 30 # 89 - 12",
       "products": [
         {
-          "id": "producto-d1-id",
-          "name": "Producto D1",
-          "amount": 15,
-          "description": "Descripción del Producto D1"
+          "id": "f1f77846-32e2-4b10-b87f-c5a93a60dfbf",
+          "name": "Zapatillas deportivas",
+          "amount": "4",
+          "description": "Para actividades deportivas o para un estilo casual y cómodo"
         },
         {
-          "id": "producto-d2-id",
-          "name": "Producto D2",
-          "amount": 35,
-          "description": "Descripción del Producto D2"
+          "id": "0b96bdd2-9d23-4d40-a740-7d220bcd09f7",
+          "name": "Botas",
+          "amount": "54",
+          "description": "Desde botas de trabajo hasta botas de moda"
         },
         {
-          "id": "b889b2ef-7a12-438a-ab9c-4ea8881057f1",
-          "name": "dfsdfs",
-          "amount": "43543",
-          "description": "ertre"
+          "id": "536c0615-d925-4197-8795-4a1d15fd3825",
+          "name": "Mocasines",
+          "amount": "34",
+          "description": "Zapatos sin cordones"
+        },
+        {
+          "id": "cbe6dbcd-95a0-43db-8ee6-6755b032cf64",
+          "name": "Sandalias",
+          "amount": "32",
+          "description": "Abiertas y ventiladas"
+        },
+        {
+          "id": "f20ac9bd-197e-4c7a-8535-bd9b22c23004",
+          "name": "Chanclas",
+          "amount": "32",
+          "description": " Sandalias ligeras y sin talón"
         }
       ]
     },
     {
-      "id": "28f37b5e-47d7-4688-8232-a651ea77f55c",
-      "name": "Proveedor Cinco",
-      "phone": "444-555-6666",
-      "direction": "Ciudad E",
+      "id": "e220c710-4446-4709-8e0c-e4464d2fe77f",
+      "name": "Andrea",
+      "phone": "3120987643",
+      "direction": "Cra 5 # 20 - 45",
       "products": [
         {
-          "id": "producto-e1-id",
-          "name": "Producto E1",
-          "amount": 22,
-          "description": "Descripción del Producto E1"
+          "id": "2bbfa039-15fa-4261-88bd-e9dc6ef75100",
+          "name": "Chocolate Negro",
+          "amount": "23",
+          "description": "Contiene una alta proporción de cacao"
         },
         {
-          "id": "producto-e2-id",
-          "name": "Producto E2",
-          "amount": 18,
-          "description": "Descripción del Producto E2"
+          "id": "fa74dbc2-831b-4308-a1f5-879f40403dcf",
+          "name": "Chocolate con Leche",
+          "amount": "54",
+          "description": "Contiene más leche en polvo o leche condensada"
         },
         {
-          "id": "8e708ffc-fe3b-44fe-b09a-6c725cfec7c0",
-          "name": "rwertretre",
-          "amount": "4343543",
-          "description": "ertergtrtr"
+          "id": "c0e3e8b8-5603-4087-9ed3-dd8305c28601",
+          "name": "Chocolate Blanco",
+          "amount": "65",
+          "description": "No contiene sólidos de cacao"
+        },
+        {
+          "id": "9ce4bc2a-374a-4b18-a720-a74f3cbbc778",
+          "name": "Chocolate Ruby",
+          "amount": "65",
+          "description": "Hecho con granos de cacao ruby"
         }
       ]
     },
     {
-      "id": "8aeb289d-094c-4ddd-8a59-e98f00772486",
-      "name": "Proveedor Seis",
-      "phone": "777-888-9999",
-      "direction": "Ciudad F",
+      "id": "1301a9d2-00d4-42f5-8119-49354c519172",
+      "name": "Samira",
+      "phone": "3157790211",
+      "direction": "Carrera 12 # 34 - 56",
       "products": [
         {
-          "id": "producto-f1-id",
-          "name": "Producto F1",
-          "amount": 8,
-          "description": "Descripción del Producto F1"
-        },
-        {
-          "id": "producto-f2-id",
-          "name": "Producto F2a",
-          "amount": "42",
-          "description": "Descripción del Producto F2"
+          "id": "47009b22-270b-4fe8-95a1-6a0ab0edf9d8",
+          "name": "Uniforme de Equipo",
+          "amount": "900",
+          "description": "Incluye camiseta y pantaloneta"
         }
       ]
     },
     {
-      "id": "c3e4782f-6904-422e-b720-525c6078ca18",
-      "name": "Proveedora hermosa",
-      "phone": "3123231289",
-      "direction": "CALLE23",
-      "products": []
-    },
-    {
-      "id": "ac652019-71f8-48d7-b18c-19306addfc25",
-      "name": "fdasdf",
-      "phone": "312321321312",
-      "direction": "fdasdf",
-      "products": []
-    },
-    {
-      "id": "939a1363-d84c-4e85-8de4-cd20bf430296",
-      "name": "fadssdf",
-      "phone": "312231312321",
-      "direction": "fdsadf",
-      "products": []
-    },
-    {
-      "id": "28da3a92-ce30-46a7-ba40-0683e4537a8e",
-      "name": "fasddf",
-      "phone": "2312312321",
-      "direction": "fdsadfsdadfs",
-      "products": []
-    },
-    {
-      "id": "fae1fdbf-e772-46da-abfe-72320d12a76a",
-      "name": "fassdf",
-      "phone": "21312323123",
-      "direction": "fdsaasdfasff",
-      "products": []
-    },
-    {
-      "id": "24f20ee4-2f99-46f0-a3b5-94d6f67c26a4",
-      "name": "fdasdfs",
-      "phone": "321321312321",
-      "direction": "sdfcasfddasf",
-      "products": []
-    },
-    {
-      "id": "389787e9-e86c-436b-87c5-eb8b0bf75efd",
-      "name": "adefe",
-      "phone": "435435435",
-      "direction": "retretre",
-      "products": []
-    },
-    {
-      "id": "d98c34a9-329f-4f5f-b9f6-bb8a42c79eee",
-      "name": "sndnks sjndksn",
-      "phone": "7887787878",
-      "direction": "dsfdsfds",
+      "id": "ec58bf36-f3f9-4b93-80fe-d70a9ed6c29f",
+      "name": "Juan Esteban",
+      "phone": "3567812398",
+      "direction": "Carrera 17 # 45 - 67",
       "products": []
     }
   ]

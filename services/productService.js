@@ -4,9 +4,6 @@ module.exports = {
     getProductData(suplierId) {
         if (suplierId) {
             const suplierFinded = data.supliers.find(suplier => suplier.id === suplierId);
-
-            console.log(suplierFinded);
-
             return suplierFinded.products.map((product) => (
                 {
                     id: product.id,

@@ -87,8 +87,6 @@ formProduct.addEventListener('keydown', function (event) {
     validKeydown(event, /^[a-zA-Z\s]+$/, 3, 'letras', validationProduct);
 });
 
-
-
 formAmount.addEventListener('input', function (event) {
     validInput(event.target.value, /^\d+$/, 1, 'números', validationAmount);
 });
@@ -123,15 +121,14 @@ const setUpdateData = (data) => {
 }
 
 const setDeleteData = (id) => {
-    console.log(id)
-    const name = document.getElementById("product_" + id).textContent;
+    const product = document.getElementById("product_" + id).textContent;
     const amount = document.getElementById("amount_" + id).textContent;
     const description = document.getElementById("description_" + id).textContent;
 
     btnDelete.setAttribute("value", id);
 
     deleteDataContainer.innerHTML = `
-        <li>Nombre: ${name}</li>
+        <li>Nombre: ${product}</li>
         <li>Cantidad: ${amount}</li>
         <li>Dirección: ${description}</li>
     `
@@ -150,7 +147,7 @@ const getFomrData = () => {
 const getFomrDataUpdate = () => {
     return {
         id: formId.value,
-        name: formProduct.value,
+        product: formProduct.value,
         amount: formAmount.value,
         description: formDescription.value
     }
@@ -175,7 +172,6 @@ const asignDeleteCallbacks = () => {
     deleteBtns.forEach(btn => {
         btn.addEventListener("click", () => {
             const deleteId = btn.getAttribute("value");
-            console.log(deleteId);
             setDeleteData(deleteId);
         })
     })
@@ -228,7 +224,7 @@ const updateRegister = (product) => {
     const updateBTN = document.getElementById("updateBtn_" + product.id);
     updateBTN.setAttribute("value", JSON.stringify(product))
 
-    tdName.innerHTML = product.name;
+    tdName.innerHTML = product.product;
     tdAmount.innerHTML = product.amount;
     tdDescition.innerHTML = product.description;
 
@@ -275,7 +271,7 @@ const createRegister = (product) => {
     tableBody.innerHTML += `
     <tr id="row_${product.id}">
         <td id="id_${product.id}"> ${selectedSupplierName} </td>
-        <td id="product_${product.id}"> ${product.product} </td>
+        <td id="product_${product.id}"> ${product.name} </td>
         <td id="amount_${product.id}"> ${product.amount}</td>
         <td id="description_${product.id}"> ${product.description}</td>
         ${crudButons(product)}
@@ -311,7 +307,6 @@ const updateProduct = () => {
 
 const createProduct = () => {
     const product = getFomrData();
-
     fetch("http://localhost:3000/products/create", {
         method: "POST",
         body: JSON.stringify(product),
