@@ -20,7 +20,12 @@ Bienvenido al proyecto de Gestión de Proveedores y Productos. Esta aplicación 
 ```bash
     npm install
 ```
-- Correr el projecto:
+- Correr el projecto(dev):
 ```bash
     npm run dev
+```
+
+- Correr el projecto:
+```bash
+    npm run start
 ```
