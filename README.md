@@ -10,5 +10,5 @@ Bienvenido al proyecto de Gestión de Proveedores y Productos. Esta aplicación 
 
 ## Desarrollado por
 
-- **Camilo Eduardo Muños Duque**
+- **Camilo Eduardo Muñoz Duque**
 - **Jazmin Andrea Saleh Peña**
